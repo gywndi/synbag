@@ -1,0 +1,30 @@
+dataSources:
+  ds0: !!org.apache.commons.dbcp2.BasicDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/shard01?autoReconnect=true&rewriteBatchedStatements=true&cacheServerConfiguration=true&useLocalSessionState=true&elideSetAutoCommits=true&connectTimeout=3000&socketTimeout=60000&useSSL=false&useAffectedRows=true&cacheCallableStmts=true&noAccessToProcedureBodies=true&characterEncoding=utf8&characterSetResults=utf8&connectionCollation=utf8_bin
+    username: shard01
+    password: shard01
+    maxTotal: 30
+  ds1: !!org.apache.commons.dbcp2.BasicDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/shard02?autoReconnect=true&rewriteBatchedStatements=true&cacheServerConfiguration=true&useLocalSessionState=true&elideSetAutoCommits=true&connectTimeout=3000&socketTimeout=60000&useSSL=false&useAffectedRows=true&cacheCallableStmts=true&noAccessToProcedureBodies=true&characterEncoding=utf8&characterSetResults=utf8&connectionCollation=utf8_bin
+    username: shard02
+    password: shard02
+    maxTotal: 30
+
+shardingRule:
+  tables:
+    user: 
+      actualDataNodes: ds${0..1}.user
+      databaseStrategy:
+        standard:
+          shardingColumn: userid
+          preciseAlgorithmClassName: net.gywn.algorithm.PreciseShardingCRC32
+  bindingTables:
+  - user
+  broadcastTables:
+  - config
+  defaultDataSourceName: ds0
+
+props:
+  sql.show: false
