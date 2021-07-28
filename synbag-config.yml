@@ -17,5 +17,7 @@ shardingTables:
     realTableName: user
     shardingColumn: userid
     shardingMethod: crc32
-
+  user_log:
+    shardingColumn: userid
+    shardingMethod: crc32
 broadcastTables: [config]

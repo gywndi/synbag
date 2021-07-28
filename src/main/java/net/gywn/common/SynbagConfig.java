@@ -31,10 +31,10 @@ public class SynbagConfig {
     @Setter
     private DataSource[] dataSources;
 
-    @Setter
+    @Setter @Getter
     private Map<String, ShardingTable> shardingTables;
 
-    @Setter
+    @Setter @Getter
     private List<String> broadcastTables;
 
     @Getter
@@ -100,6 +100,7 @@ public class SynbagConfig {
         for (int i = 0; i < dataSources.length; i++) {
             map.put(String.format("ds%d", i), dataSources[i]);
         }
+        shardingRuleConfig.setDefaultDataSourceName("ds0");
         shardingDatasource = ShardingDataSourceFactory.createDataSource(map, shardingRuleConfig, null);
     }
 
