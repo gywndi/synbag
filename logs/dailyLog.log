@@ -1,0 +1,956 @@
+ INFO [2021-07-29 13:49:49,681] (ConfigurationLogger.java[log]:104) - ShardingRuleConfiguration:
+bindingTables:
+- user
+- user_log
+broadcastTables:
+- config
+defaultDataSourceName: ds0
+tables:
+  user:
+    actualDataNodes: ds${0..1}.user
+    databaseStrategy:
+      standard:
+        preciseAlgorithmClassName: net.gywn.algorithm.PreciseShardingCRC32
+        shardingColumn: userid
+    logicTable: user
+  user_log:
+    actualDataNodes: ds${0..1}.user_log
+    databaseStrategy:
+      standard:
+        preciseAlgorithmClassName: net.gywn.algorithm.PreciseShardingCRC32
+        shardingColumn: userid
+    logicTable: user_log
+
+ INFO [2021-07-29 13:49:49,693] (ShardingMetaDataLoader.java[loadShardingSchemaMetaData]:131) - Loading 2 logic tables' meta data.
+ INFO [2021-07-29 13:49:49,719] (SchemaMetaDataLoader.java[load]:70) - Loading 3 tables' meta data.
+ INFO [2021-07-29 13:49:49,743] (MultipleDataSourcesRuntimeContext.java[createMetaData]:59) - Meta data load finished, cost 61 milliseconds.
+ INFO [2021-07-29 13:49:49,753] (SynbagServer.java[call]:79) - 0.0.0.0:5280/t/user
+DEBUG [2021-07-29 13:49:49,755] (Routes.java[add]:191) - Adds route: post, /t/user, spark.RouteImpl$1@70f822e
+ INFO [2021-07-29 13:49:49,755] (SynbagServer.java[call]:79) - 0.0.0.0:5280/t/user_log
+DEBUG [2021-07-29 13:49:49,756] (Routes.java[add]:191) - Adds route: post, /t/user_log, spark.RouteImpl$1@3efedc6f
+ INFO [2021-07-29 13:49:49,756] (SynbagServer.java[call]:79) - 0.0.0.0:5280/t/config
+DEBUG [2021-07-29 13:49:49,756] (Routes.java[add]:191) - Adds route: post, /t/config, spark.RouteImpl$1@45bf6f39
+ INFO [2021-07-29 13:49:49,756] (SynbagServer.java[call]:91) - 0.0.0.0:5280/q
+DEBUG [2021-07-29 13:49:49,757] (Routes.java[add]:191) - Adds route: post, /q, spark.RouteImpl$1@17a703f5
+DEBUG [2021-07-29 13:49:49,768] (Log.java[initialized]:159) - Logging to org.slf4j.impl.Log4jLoggerAdapter(org.eclipse.jetty.util.log) via org.eclipse.jetty.util.log.Slf4jLog
+ INFO [2021-07-29 13:49:49,770] (Log.java[initialized]:169) - Logging initialized @755ms to org.eclipse.jetty.util.log.Slf4jLog
+DEBUG [2021-07-29 13:49:49,779] (ContainerLifeCycle.java[addBean]:412) - Server@6289f71b{STOPPED}[9.4.31.v20200723] added {QueuedThreadPool[qtp709686918]@2a4cf686{STOPPED,8<=0<=200,i=0,r=-1,q=0}[NO_TRY],AUTO}
+DEBUG [2021-07-29 13:49:49,786] (ContainerLifeCycle.java[addBean]:412) - HttpConnectionFactory@7d45629a[HTTP/1.1] added {HttpConfiguration@29061095{32768/8192,8192/8192,https://:0,[ForwardedRequestCustomizer@14b69bb1]},POJO}
+DEBUG [2021-07-29 13:49:49,793] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@6538d423{null, ()}{0.0.0.0:0} added {Server@6289f71b{STOPPED}[9.4.31.v20200723],UNMANAGED}
+DEBUG [2021-07-29 13:49:49,793] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@6538d423{null, ()}{0.0.0.0:0} added {QueuedThreadPool[qtp709686918]@2a4cf686{STOPPED,8<=0<=200,i=0,r=-1,q=0}[NO_TRY],AUTO}
+DEBUG [2021-07-29 13:49:49,794] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@6538d423{null, ()}{0.0.0.0:0} added {ScheduledExecutorScheduler@56ebe2f9{STOPPED},AUTO}
+DEBUG [2021-07-29 13:49:49,794] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@6538d423{null, ()}{0.0.0.0:0} added {org.eclipse.jetty.io.ArrayByteBufferPool@39475463,POJO}
+DEBUG [2021-07-29 13:49:49,794] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@6538d423{null, (http/1.1)}{0.0.0.0:0} added {HttpConnectionFactory@7d45629a[HTTP/1.1],AUTO}
+DEBUG [2021-07-29 13:49:49,794] (AbstractConnector.java[addConnectionFactory]:484) - ServerConnector@6538d423{HTTP/1.1, (http/1.1)}{0.0.0.0:0} added HttpConnectionFactory@7d45629a[HTTP/1.1]
+DEBUG [2021-07-29 13:49:49,796] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@6538d423{HTTP/1.1, (http/1.1)}{0.0.0.0:0} added {SelectorManager@ServerConnector@6538d423{HTTP/1.1, (http/1.1)}{0.0.0.0:0},MANAGED}
+DEBUG [2021-07-29 13:49:49,796] (ContainerLifeCycle.java[addBean]:412) - Server@6289f71b{STOPPED}[9.4.31.v20200723] added {ServerConnector@6538d423{HTTP/1.1, (http/1.1)}{0.0.0.0:5280},AUTO}
+DEBUG [2021-07-29 13:49:49,797] (ContainerLifeCycle.java[addBean]:412) - Server@6289f71b{STOPPED}[9.4.31.v20200723] added {spark.embeddedserver.jetty.JettyHandler810311714==dftMaxIdleSec=-1,MANAGED}
+ INFO [2021-07-29 13:49:49,797] (EmbeddedJettyServer.java[ignite]:142) - == Spark has ignited ...
+ INFO [2021-07-29 13:49:49,797] (EmbeddedJettyServer.java[ignite]:146) - >> Listening on 0.0.0.0:5280
+DEBUG [2021-07-29 13:49:49,797] (AbstractLifeCycle.java[setStarting]:200) - starting Server@6289f71b{STOPPED}[9.4.31.v20200723]
+DEBUG [2021-07-29 13:49:49,798] (ContainerLifeCycle.java[addBean]:412) - Server@6289f71b{STARTING}[9.4.31.v20200723] added {ErrorHandler@1b41e534{STOPPED},AUTO}
+ INFO [2021-07-29 13:49:49,798] (Server.java[doStart]:360) - jetty-9.4.31.v20200723; built: 2020-07-23T17:57:36.812Z; git: 450ba27947e13e66baa8cd1ce7e85a4461cacc1d; jvm 16.0.1+9
+DEBUG [2021-07-29 13:49:49,802] (AbstractHandler.java[doStart]:94) - starting Server@6289f71b{STARTING}[9.4.31.v20200723]
+DEBUG [2021-07-29 13:49:49,802] (AbstractLifeCycle.java[setStarting]:200) - starting QueuedThreadPool[qtp709686918]@2a4cf686{STOPPED,8<=0<=200,i=0,r=-1,q=0}[NO_TRY]
+DEBUG [2021-07-29 13:49:49,802] (ReservedThreadExecutor.java[<init>]:85) - ReservedThreadExecutor@af5fe8a{s=0/8,p=0}
+DEBUG [2021-07-29 13:49:49,803] (ContainerLifeCycle.java[addBean]:412) - QueuedThreadPool[qtp709686918]@2a4cf686{STARTING,8<=0<=200,i=0,r=-1,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}] added {ReservedThreadExecutor@af5fe8a{s=0/8,p=0},AUTO}
+DEBUG [2021-07-29 13:49:49,803] (AbstractLifeCycle.java[setStarting]:200) - starting ReservedThreadExecutor@af5fe8a{s=0/8,p=0}
+DEBUG [2021-07-29 13:49:49,804] (AbstractLifeCycle.java[setStarted]:190) - STARTED @789ms ReservedThreadExecutor@af5fe8a{s=0/8,p=0}
+DEBUG [2021-07-29 13:49:49,804] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp709686918-19,5,main]
+DEBUG [2021-07-29 13:49:49,804] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp709686918-20,5,main]
+DEBUG [2021-07-29 13:49:49,804] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp709686918-21,5,main]
+DEBUG [2021-07-29 13:49:49,804] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp709686918-22,5,main]
+DEBUG [2021-07-29 13:49:49,804] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp709686918]@2a4cf686{STARTING,8<=2<=200,i=2,r=-1,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}]
+DEBUG [2021-07-29 13:49:49,805] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp709686918-23,5,main]
+DEBUG [2021-07-29 13:49:49,805] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp709686918-24,5,main]
+DEBUG [2021-07-29 13:49:49,805] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp709686918-25,5,main]
+DEBUG [2021-07-29 13:49:49,806] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp709686918-26,5,main]
+DEBUG [2021-07-29 13:49:49,806] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp709686918]@2a4cf686{STARTING,8<=5<=200,i=5,r=-1,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}]
+DEBUG [2021-07-29 13:49:49,806] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp709686918]@2a4cf686{STARTING,8<=4<=200,i=4,r=-1,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}]
+DEBUG [2021-07-29 13:49:49,806] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp709686918]@2a4cf686{STARTING,8<=3<=200,i=3,r=-1,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}]
+DEBUG [2021-07-29 13:49:49,807] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}]
+DEBUG [2021-07-29 13:49:49,807] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp709686918]@2a4cf686{STARTING,8<=8<=200,i=8,r=-1,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}]
+DEBUG [2021-07-29 13:49:49,807] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp709686918]@2a4cf686{STARTING,8<=7<=200,i=7,r=-1,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}]
+DEBUG [2021-07-29 13:49:49,808] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp709686918]@2a4cf686{STARTING,8<=6<=200,i=6,r=-1,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}]
+DEBUG [2021-07-29 13:49:49,808] (AbstractLifeCycle.java[setStarted]:190) - STARTED @791ms QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}]
+DEBUG [2021-07-29 13:49:49,808] (AbstractLifeCycle.java[setStarting]:200) - starting spark.embeddedserver.jetty.JettyHandler810311714==dftMaxIdleSec=-1
+DEBUG [2021-07-29 13:49:49,811] (ContainerLifeCycle.java[addBean]:412) - spark.embeddedserver.jetty.JettyHandler810311714==dftMaxIdleSec=-1 added {org.eclipse.jetty.server.session.DefaultSessionCache@409d4acf[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false],AUTO}
+DEBUG [2021-07-29 13:49:49,811] (ContainerLifeCycle.java[addBean]:412) - org.eclipse.jetty.server.session.DefaultSessionCache@409d4acf[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false] added {org.eclipse.jetty.server.session.NullSessionDataStore@32df6227[passivating=false,graceSec=3600],AUTO}
+DEBUG [2021-07-29 13:49:49,812] (AbstractLifeCycle.java[setStarting]:200) - starting DefaultSessionIdManager@55a4097c{STOPPED}[worker=null]
+ INFO [2021-07-29 13:49:49,812] (DefaultSessionIdManager.java[doStart]:334) - DefaultSessionIdManager workerName=node0
+ INFO [2021-07-29 13:49:49,812] (DefaultSessionIdManager.java[doStart]:339) - No SessionScavenger set, using defaults
+DEBUG [2021-07-29 13:49:49,812] (ContainerLifeCycle.java[addBean]:412) - DefaultSessionIdManager@55a4097c{STARTING}[worker=node0] added {HouseKeeper@7e2eb6b1{STOPPED}[interval=600000, ownscheduler=false],MANAGED}
+DEBUG [2021-07-29 13:49:49,812] (AbstractLifeCycle.java[setStarting]:200) - starting HouseKeeper@7e2eb6b1{STOPPED}[interval=600000, ownscheduler=false]
+DEBUG [2021-07-29 13:49:49,812] (AbstractLifeCycle.java[setStarting]:200) - starting ScheduledExecutorScheduler@308b71f0{STOPPED}
+DEBUG [2021-07-29 13:49:49,813] (AbstractLifeCycle.java[setStarted]:190) - STARTED @798ms ScheduledExecutorScheduler@308b71f0{STARTED}
+DEBUG [2021-07-29 13:49:49,813] (HouseKeeper.java[findScheduler]:117) - Using own scheduler for scavenging
+ INFO [2021-07-29 13:49:49,813] (HouseKeeper.java[startScavenging]:140) - node0 Scavenging every 660000ms
+DEBUG [2021-07-29 13:49:49,814] (AbstractLifeCycle.java[setStarted]:190) - STARTED @799ms HouseKeeper@7e2eb6b1{STARTED}[interval=660000, ownscheduler=true]
+DEBUG [2021-07-29 13:49:49,814] (AbstractLifeCycle.java[setStarted]:190) - STARTED @799ms DefaultSessionIdManager@55a4097c{STARTED}[worker=node0]
+DEBUG [2021-07-29 13:49:49,814] (ContainerLifeCycle.java[addBean]:412) - Server@6289f71b{STARTING}[9.4.31.v20200723] added {DefaultSessionIdManager@55a4097c{STARTED}[worker=node0],MANAGED}
+DEBUG [2021-07-29 13:49:49,814] (ContainerLifeCycle.java[addBean]:412) - spark.embeddedserver.jetty.JettyHandler810311714==dftMaxIdleSec=-1 added {DefaultSessionIdManager@55a4097c{STARTED}[worker=node0],UNMANAGED}
+DEBUG [2021-07-29 13:49:49,814] (AbstractLifeCycle.java[setStarting]:200) - starting ScheduledExecutorScheduler@204a08ba{STOPPED}
+DEBUG [2021-07-29 13:49:49,814] (AbstractLifeCycle.java[setStarted]:190) - STARTED @800ms ScheduledExecutorScheduler@204a08ba{STARTED}
+DEBUG [2021-07-29 13:49:49,815] (AbstractHandler.java[doStart]:94) - starting spark.embeddedserver.jetty.JettyHandler810311714==dftMaxIdleSec=-1
+DEBUG [2021-07-29 13:49:49,815] (AbstractLifeCycle.java[setStarting]:200) - starting org.eclipse.jetty.server.session.DefaultSessionCache@409d4acf[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false]
+DEBUG [2021-07-29 13:49:49,815] (AbstractLifeCycle.java[setStarting]:200) - starting org.eclipse.jetty.server.session.NullSessionDataStore@32df6227[passivating=false,graceSec=3600]
+DEBUG [2021-07-29 13:49:49,815] (AbstractLifeCycle.java[setStarted]:190) - STARTED @800ms org.eclipse.jetty.server.session.NullSessionDataStore@32df6227[passivating=false,graceSec=3600]
+DEBUG [2021-07-29 13:49:49,815] (AbstractLifeCycle.java[setStarted]:190) - STARTED @800ms org.eclipse.jetty.server.session.DefaultSessionCache@409d4acf[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false]
+DEBUG [2021-07-29 13:49:49,815] (AbstractLifeCycle.java[setStarted]:190) - STARTED @800ms spark.embeddedserver.jetty.JettyHandler810311714==dftMaxIdleSec=-1
+DEBUG [2021-07-29 13:49:49,815] (AbstractLifeCycle.java[setStarting]:200) - starting ErrorHandler@1b41e534{STOPPED}
+DEBUG [2021-07-29 13:49:49,815] (AbstractHandler.java[doStart]:94) - starting ErrorHandler@1b41e534{STARTING}
+DEBUG [2021-07-29 13:49:49,815] (AbstractLifeCycle.java[setStarted]:190) - STARTED @801ms ErrorHandler@1b41e534{STARTED}
+DEBUG [2021-07-29 13:49:49,815] (AbstractLifeCycle.java[setStarting]:200) - starting ServerConnector@6538d423{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+DEBUG [2021-07-29 13:49:49,817] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@6538d423{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {sun.nio.ch.ServerSocketChannelImpl[/[0:0:0:0:0:0:0:0]:5280],POJO}
+DEBUG [2021-07-29 13:49:49,818] (AbstractLifeCycle.java[setStarting]:200) - starting ScheduledExecutorScheduler@56ebe2f9{STOPPED}
+DEBUG [2021-07-29 13:49:49,818] (AbstractLifeCycle.java[setStarted]:190) - STARTED @803ms ScheduledExecutorScheduler@56ebe2f9{STARTED}
+DEBUG [2021-07-29 13:49:49,818] (AbstractLifeCycle.java[setStarting]:200) - starting HttpConnectionFactory@7d45629a[HTTP/1.1]
+DEBUG [2021-07-29 13:49:49,818] (AbstractLifeCycle.java[setStarted]:190) - STARTED @804ms HttpConnectionFactory@7d45629a[HTTP/1.1]
+DEBUG [2021-07-29 13:49:49,818] (AbstractLifeCycle.java[setStarting]:200) - starting SelectorManager@ServerConnector@6538d423{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+DEBUG [2021-07-29 13:49:49,822] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@39e6f68e/SelectorProducer@60fd887c/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.821598+09:00 added {SelectorProducer@60fd887c,POJO}
+DEBUG [2021-07-29 13:49:49,822] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@39e6f68e/SelectorProducer@60fd887c/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.822685+09:00 added {QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}],UNMANAGED}
+DEBUG [2021-07-29 13:49:49,823] (EatWhatYouKill.java[<init>]:93) - EatWhatYouKill@39e6f68e/SelectorProducer@60fd887c/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.823256+09:00 created
+DEBUG [2021-07-29 13:49:49,823] (ContainerLifeCycle.java[addBean]:412) - ManagedSelector@1a34cd20{STOPPED} id=0 keys=-1 selected=-1 updates=0 added {EatWhatYouKill@39e6f68e/SelectorProducer@60fd887c/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.823936+09:00,MANAGED}
+DEBUG [2021-07-29 13:49:49,824] (ContainerLifeCycle.java[addBean]:412) - SelectorManager@ServerConnector@6538d423{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {ManagedSelector@1a34cd20{STOPPED} id=0 keys=-1 selected=-1 updates=0,AUTO}
+DEBUG [2021-07-29 13:49:49,824] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@49937900/SelectorProducer@1eb25220/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.824579+09:00 added {SelectorProducer@1eb25220,POJO}
+DEBUG [2021-07-29 13:49:49,825] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@49937900/SelectorProducer@1eb25220/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.82503+09:00 added {QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}],UNMANAGED}
+DEBUG [2021-07-29 13:49:49,825] (EatWhatYouKill.java[<init>]:93) - EatWhatYouKill@49937900/SelectorProducer@1eb25220/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.825632+09:00 created
+DEBUG [2021-07-29 13:49:49,826] (ContainerLifeCycle.java[addBean]:412) - ManagedSelector@2917a4d7{STOPPED} id=1 keys=-1 selected=-1 updates=0 added {EatWhatYouKill@49937900/SelectorProducer@1eb25220/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.826026+09:00,MANAGED}
+DEBUG [2021-07-29 13:49:49,826] (ContainerLifeCycle.java[addBean]:412) - SelectorManager@ServerConnector@6538d423{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {ManagedSelector@2917a4d7{STOPPED} id=1 keys=-1 selected=-1 updates=0,AUTO}
+DEBUG [2021-07-29 13:49:49,826] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@15762118/SelectorProducer@477f11cf/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.826538+09:00 added {SelectorProducer@477f11cf,POJO}
+DEBUG [2021-07-29 13:49:49,827] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@15762118/SelectorProducer@477f11cf/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.826819+09:00 added {QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}],UNMANAGED}
+DEBUG [2021-07-29 13:49:49,827] (EatWhatYouKill.java[<init>]:93) - EatWhatYouKill@15762118/SelectorProducer@477f11cf/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.827307+09:00 created
+DEBUG [2021-07-29 13:49:49,827] (ContainerLifeCycle.java[addBean]:412) - ManagedSelector@4bd07852{STOPPED} id=2 keys=-1 selected=-1 updates=0 added {EatWhatYouKill@15762118/SelectorProducer@477f11cf/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.827824+09:00,MANAGED}
+DEBUG [2021-07-29 13:49:49,828] (ContainerLifeCycle.java[addBean]:412) - SelectorManager@ServerConnector@6538d423{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {ManagedSelector@4bd07852{STOPPED} id=2 keys=-1 selected=-1 updates=0,AUTO}
+DEBUG [2021-07-29 13:49:49,828] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@5ff55ce3/SelectorProducer@7bafc8e4/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.828288+09:00 added {SelectorProducer@7bafc8e4,POJO}
+DEBUG [2021-07-29 13:49:49,828] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@5ff55ce3/SelectorProducer@7bafc8e4/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.828522+09:00 added {QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}],UNMANAGED}
+DEBUG [2021-07-29 13:49:49,828] (EatWhatYouKill.java[<init>]:93) - EatWhatYouKill@5ff55ce3/SelectorProducer@7bafc8e4/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.828845+09:00 created
+DEBUG [2021-07-29 13:49:49,829] (ContainerLifeCycle.java[addBean]:412) - ManagedSelector@44615f37{STOPPED} id=3 keys=-1 selected=-1 updates=0 added {EatWhatYouKill@5ff55ce3/SelectorProducer@7bafc8e4/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.829228+09:00,MANAGED}
+DEBUG [2021-07-29 13:49:49,829] (ContainerLifeCycle.java[addBean]:412) - SelectorManager@ServerConnector@6538d423{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {ManagedSelector@44615f37{STOPPED} id=3 keys=-1 selected=-1 updates=0,AUTO}
+DEBUG [2021-07-29 13:49:49,829] (AbstractLifeCycle.java[setStarting]:200) - starting ManagedSelector@1a34cd20{STOPPED} id=0 keys=-1 selected=-1 updates=0
+DEBUG [2021-07-29 13:49:49,829] (AbstractLifeCycle.java[setStarting]:200) - starting EatWhatYouKill@39e6f68e/SelectorProducer@60fd887c/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.829882+09:00
+DEBUG [2021-07-29 13:49:49,830] (AbstractLifeCycle.java[setStarted]:190) - STARTED @815ms EatWhatYouKill@39e6f68e/SelectorProducer@60fd887c/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.83025+09:00
+DEBUG [2021-07-29 13:49:49,832] (QueuedThreadPool.java[execute]:543) - queue org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab818@154fefbc startThread=0
+DEBUG [2021-07-29 13:49:49,833] (QueuedThreadPool.java[run]:937) - run org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab818@154fefbc in QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=7,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}]
+DEBUG [2021-07-29 13:49:49,833] (ManagedSelector.java[submit]:252) - Queued change lazy=false org.eclipse.jetty.io.ManagedSelector$Start@1f006d65 on ManagedSelector@1a34cd20{STARTING} id=0 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:49:49,833] (EatWhatYouKill.java[tryProduce]:141) - EatWhatYouKill@39e6f68e/SelectorProducer@60fd887c/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=7,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.833456+09:00 tryProduce false
+DEBUG [2021-07-29 13:49:49,833] (ManagedSelector.java[processUpdates]:524) - updateable 1
+DEBUG [2021-07-29 13:49:49,833] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ManagedSelector$Start@1f006d65
+DEBUG [2021-07-29 13:49:49,834] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:49:49,834] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@1ed66eb3 waiting with 0 keys
+DEBUG [2021-07-29 13:49:49,834] (AbstractLifeCycle.java[setStarted]:190) - STARTED @819ms ManagedSelector@1a34cd20{STARTED} id=0 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:49:49,834] (AbstractLifeCycle.java[setStarting]:200) - starting ManagedSelector@2917a4d7{STOPPED} id=1 keys=-1 selected=-1 updates=0
+DEBUG [2021-07-29 13:49:49,834] (AbstractLifeCycle.java[setStarting]:200) - starting EatWhatYouKill@49937900/SelectorProducer@1eb25220/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=7,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.834386+09:00
+DEBUG [2021-07-29 13:49:49,834] (AbstractLifeCycle.java[setStarted]:190) - STARTED @820ms EatWhatYouKill@49937900/SelectorProducer@1eb25220/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=7,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.83481+09:00
+DEBUG [2021-07-29 13:49:49,834] (QueuedThreadPool.java[execute]:543) - queue org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab818@560f87f6 startThread=0
+DEBUG [2021-07-29 13:49:49,835] (ManagedSelector.java[submit]:252) - Queued change lazy=false org.eclipse.jetty.io.ManagedSelector$Start@3ca902d0 on ManagedSelector@2917a4d7{STARTING} id=1 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:49:49,835] (QueuedThreadPool.java[run]:937) - run org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab818@560f87f6 in QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=6,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}]
+DEBUG [2021-07-29 13:49:49,835] (EatWhatYouKill.java[tryProduce]:141) - EatWhatYouKill@49937900/SelectorProducer@1eb25220/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=6,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.835607+09:00 tryProduce false
+DEBUG [2021-07-29 13:49:49,835] (ManagedSelector.java[processUpdates]:524) - updateable 1
+DEBUG [2021-07-29 13:49:49,835] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ManagedSelector$Start@3ca902d0
+DEBUG [2021-07-29 13:49:49,835] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:49:49,835] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@2422dec2 waiting with 0 keys
+DEBUG [2021-07-29 13:49:49,835] (AbstractLifeCycle.java[setStarted]:190) - STARTED @821ms ManagedSelector@2917a4d7{STARTED} id=1 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:49:49,835] (AbstractLifeCycle.java[setStarting]:200) - starting ManagedSelector@4bd07852{STOPPED} id=2 keys=-1 selected=-1 updates=0
+DEBUG [2021-07-29 13:49:49,836] (AbstractLifeCycle.java[setStarting]:200) - starting EatWhatYouKill@15762118/SelectorProducer@477f11cf/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=6,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.836273+09:00
+DEBUG [2021-07-29 13:49:49,836] (AbstractLifeCycle.java[setStarted]:190) - STARTED @821ms EatWhatYouKill@15762118/SelectorProducer@477f11cf/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=6,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.836454+09:00
+DEBUG [2021-07-29 13:49:49,836] (QueuedThreadPool.java[execute]:543) - queue org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab818@26f2b5a2 startThread=0
+DEBUG [2021-07-29 13:49:49,836] (ManagedSelector.java[submit]:252) - Queued change lazy=false org.eclipse.jetty.io.ManagedSelector$Start@2901b58d on ManagedSelector@4bd07852{STARTING} id=2 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:49:49,836] (QueuedThreadPool.java[run]:937) - run org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab818@26f2b5a2 in QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=5,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}]
+DEBUG [2021-07-29 13:49:49,836] (EatWhatYouKill.java[tryProduce]:141) - EatWhatYouKill@15762118/SelectorProducer@477f11cf/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=5,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.836939+09:00 tryProduce false
+DEBUG [2021-07-29 13:49:49,837] (ManagedSelector.java[processUpdates]:524) - updateable 1
+DEBUG [2021-07-29 13:49:49,837] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ManagedSelector$Start@2901b58d
+DEBUG [2021-07-29 13:49:49,837] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:49:49,837] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@5d1443b4 waiting with 0 keys
+DEBUG [2021-07-29 13:49:49,837] (AbstractLifeCycle.java[setStarted]:190) - STARTED @822ms ManagedSelector@4bd07852{STARTED} id=2 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:49:49,837] (AbstractLifeCycle.java[setStarting]:200) - starting ManagedSelector@44615f37{STOPPED} id=3 keys=-1 selected=-1 updates=0
+DEBUG [2021-07-29 13:49:49,837] (AbstractLifeCycle.java[setStarting]:200) - starting EatWhatYouKill@5ff55ce3/SelectorProducer@7bafc8e4/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=5,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.837489+09:00
+DEBUG [2021-07-29 13:49:49,837] (AbstractLifeCycle.java[setStarted]:190) - STARTED @822ms EatWhatYouKill@5ff55ce3/SelectorProducer@7bafc8e4/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=5,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.837699+09:00
+DEBUG [2021-07-29 13:49:49,837] (QueuedThreadPool.java[execute]:543) - queue org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab818@31bb76c startThread=0
+DEBUG [2021-07-29 13:49:49,838] (ManagedSelector.java[submit]:252) - Queued change lazy=false org.eclipse.jetty.io.ManagedSelector$Start@77d08a5d on ManagedSelector@44615f37{STARTING} id=3 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:49:49,838] (QueuedThreadPool.java[run]:937) - run org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab818@31bb76c in QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=4,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}]
+DEBUG [2021-07-29 13:49:49,838] (EatWhatYouKill.java[tryProduce]:141) - EatWhatYouKill@5ff55ce3/SelectorProducer@7bafc8e4/IDLE/p=false/QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=4,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:49:49.838414+09:00 tryProduce false
+DEBUG [2021-07-29 13:49:49,838] (ManagedSelector.java[processUpdates]:524) - updateable 1
+DEBUG [2021-07-29 13:49:49,838] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ManagedSelector$Start@77d08a5d
+DEBUG [2021-07-29 13:49:49,838] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:49:49,838] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@43fe1714 waiting with 0 keys
+DEBUG [2021-07-29 13:49:49,838] (AbstractLifeCycle.java[setStarted]:190) - STARTED @824ms ManagedSelector@44615f37{STARTED} id=3 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:49:49,838] (AbstractLifeCycle.java[setStarted]:190) - STARTED @824ms SelectorManager@ServerConnector@6538d423{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+DEBUG [2021-07-29 13:49:49,839] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@6538d423{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {acceptor-0@4d3a8a2c,POJO}
+DEBUG [2021-07-29 13:49:49,839] (QueuedThreadPool.java[execute]:543) - queue acceptor-0@4d3a8a2c startThread=0
+ INFO [2021-07-29 13:49:49,839] (AbstractConnector.java[doStart]:331) - Started ServerConnector@6538d423{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+DEBUG [2021-07-29 13:49:49,839] (QueuedThreadPool.java[run]:937) - run acceptor-0@4d3a8a2c in QueuedThreadPool[qtp709686918]@2a4cf686{STARTED,8<=8<=200,i=3,r=8,q=0}[ReservedThreadExecutor@af5fe8a{s=0/8,p=0}]
+DEBUG [2021-07-29 13:49:49,840] (AbstractLifeCycle.java[setStarted]:190) - STARTED @825ms ServerConnector@6538d423{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+ INFO [2021-07-29 13:49:49,860] (Server.java[doStart]:400) - Started @846ms
+DEBUG [2021-07-29 13:49:49,860] (AbstractLifeCycle.java[setStarted]:190) - STARTED @846ms Server@6289f71b{STARTED}[9.4.31.v20200723]
+ INFO [2021-07-29 13:55:04,030] (SynbagConfig.java[init]:73) - ===========================
+ INFO [2021-07-29 13:55:04,032] (SynbagConfig.java[init]:74) - Config sharding tables 
+ INFO [2021-07-29 13:55:04,034] (SynbagConfig.java[init]:83) - [datanodes] ds${0..1}.user [shardingTable] ShardingTable(realTableName=user, shardingColumn=userid, shardingMethod=crc32, preciseShardingAlgorithm=net.gywn.algorithm.PreciseShardingCRC32@b7c4869)
+ INFO [2021-07-29 13:55:04,035] (SynbagConfig.java[init]:83) - [datanodes] ds${0..1}.user_log [shardingTable] ShardingTable(realTableName=user_log, shardingColumn=userid, shardingMethod=crc32, preciseShardingAlgorithm=net.gywn.algorithm.PreciseShardingCRC32@29a0cdb)
+ INFO [2021-07-29 13:55:04,035] (SynbagConfig.java[init]:98) - ===========================
+ INFO [2021-07-29 13:55:04,035] (SynbagConfig.java[init]:99) - Config broastcast tables 
+ INFO [2021-07-29 13:55:04,035] (SynbagConfig.java[init]:102) - [broadcastTable] config
+ INFO [2021-07-29 13:55:04,392] (ConfigurationLogger.java[log]:104) - ShardingRuleConfiguration:
+bindingTables:
+- user
+- user_log
+broadcastTables:
+- config
+defaultDataSourceName: ds0
+tables:
+  user:
+    actualDataNodes: ds${0..1}.user
+    databaseStrategy:
+      standard:
+        preciseAlgorithmClassName: net.gywn.algorithm.PreciseShardingCRC32
+        shardingColumn: userid
+    logicTable: user
+  user_log:
+    actualDataNodes: ds${0..1}.user_log
+    databaseStrategy:
+      standard:
+        preciseAlgorithmClassName: net.gywn.algorithm.PreciseShardingCRC32
+        shardingColumn: userid
+    logicTable: user_log
+
+ INFO [2021-07-29 13:55:04,402] (ShardingMetaDataLoader.java[loadShardingSchemaMetaData]:131) - Loading 2 logic tables' meta data.
+ INFO [2021-07-29 13:55:04,432] (SchemaMetaDataLoader.java[load]:70) - Loading 3 tables' meta data.
+ INFO [2021-07-29 13:55:04,455] (MultipleDataSourcesRuntimeContext.java[createMetaData]:59) - Meta data load finished, cost 63 milliseconds.
+ INFO [2021-07-29 13:55:04,464] (SynbagConfig.java[init]:115) - shardingDatasource created
+ INFO [2021-07-29 13:55:04,464] (SynbagConfig.java[loadAndConfigSynbag]:57) - SynbagConfig(shardingRuleConfig=org.apache.shardingsphere.api.config.sharding.ShardingRuleConfiguration@cbc8d0f, dataSources=[org.apache.commons.dbcp2.BasicDataSource@5c1f6d57, org.apache.commons.dbcp2.BasicDataSource@f288c14], shardingTables={user=ShardingTable(realTableName=user, shardingColumn=userid, shardingMethod=crc32, preciseShardingAlgorithm=net.gywn.algorithm.PreciseShardingCRC32@b7c4869), user_log=ShardingTable(realTableName=user_log, shardingColumn=userid, shardingMethod=crc32, preciseShardingAlgorithm=net.gywn.algorithm.PreciseShardingCRC32@29a0cdb)}, broadcastTables=[config], shardingDatasource=org.apache.shardingsphere.shardingjdbc.jdbc.core.datasource.ShardingDataSource@6794ac0b)
+ INFO [2021-07-29 13:55:04,467] (SynbagServer.java[call]:79) - 0.0.0.0:5280/t/user
+DEBUG [2021-07-29 13:55:04,468] (Routes.java[add]:191) - Adds route: post, /t/user, spark.RouteImpl$1@618ad2aa
+ INFO [2021-07-29 13:55:04,469] (SynbagServer.java[call]:79) - 0.0.0.0:5280/t/user_log
+DEBUG [2021-07-29 13:55:04,469] (Routes.java[add]:191) - Adds route: post, /t/user_log, spark.RouteImpl$1@5e671e20
+ INFO [2021-07-29 13:55:04,470] (SynbagServer.java[call]:79) - 0.0.0.0:5280/t/config
+DEBUG [2021-07-29 13:55:04,470] (Routes.java[add]:191) - Adds route: post, /t/config, spark.RouteImpl$1@3eabe84a
+ INFO [2021-07-29 13:55:04,470] (SynbagServer.java[call]:91) - 0.0.0.0:5280/q
+DEBUG [2021-07-29 13:55:04,470] (Routes.java[add]:191) - Adds route: post, /q, spark.RouteImpl$1@38fc5554
+DEBUG [2021-07-29 13:55:04,478] (Log.java[initialized]:159) - Logging to org.slf4j.impl.Log4jLoggerAdapter(org.eclipse.jetty.util.log) via org.eclipse.jetty.util.log.Slf4jLog
+ INFO [2021-07-29 13:55:04,479] (Log.java[initialized]:169) - Logging initialized @751ms to org.eclipse.jetty.util.log.Slf4jLog
+DEBUG [2021-07-29 13:55:04,485] (ContainerLifeCycle.java[addBean]:412) - Server@519b7142{STOPPED}[9.4.31.v20200723] added {QueuedThreadPool[qtp2135904784]@7f4f5210{STOPPED,8<=0<=200,i=0,r=-1,q=0}[NO_TRY],AUTO}
+DEBUG [2021-07-29 13:55:04,498] (ContainerLifeCycle.java[addBean]:412) - HttpConnectionFactory@3874ad44[HTTP/1.1] added {HttpConfiguration@3742fe8{32768/8192,8192/8192,https://:0,[ForwardedRequestCustomizer@39eb8ece]},POJO}
+DEBUG [2021-07-29 13:55:04,502] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@56075a5b{null, ()}{0.0.0.0:0} added {Server@519b7142{STOPPED}[9.4.31.v20200723],UNMANAGED}
+DEBUG [2021-07-29 13:55:04,502] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@56075a5b{null, ()}{0.0.0.0:0} added {QueuedThreadPool[qtp2135904784]@7f4f5210{STOPPED,8<=0<=200,i=0,r=-1,q=0}[NO_TRY],AUTO}
+DEBUG [2021-07-29 13:55:04,502] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@56075a5b{null, ()}{0.0.0.0:0} added {ScheduledExecutorScheduler@9ec0502{STOPPED},AUTO}
+DEBUG [2021-07-29 13:55:04,503] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@56075a5b{null, ()}{0.0.0.0:0} added {org.eclipse.jetty.io.ArrayByteBufferPool@12357c6c,POJO}
+DEBUG [2021-07-29 13:55:04,503] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@56075a5b{null, (http/1.1)}{0.0.0.0:0} added {HttpConnectionFactory@3874ad44[HTTP/1.1],AUTO}
+DEBUG [2021-07-29 13:55:04,503] (AbstractConnector.java[addConnectionFactory]:484) - ServerConnector@56075a5b{HTTP/1.1, (http/1.1)}{0.0.0.0:0} added HttpConnectionFactory@3874ad44[HTTP/1.1]
+DEBUG [2021-07-29 13:55:04,505] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@56075a5b{HTTP/1.1, (http/1.1)}{0.0.0.0:0} added {SelectorManager@ServerConnector@56075a5b{HTTP/1.1, (http/1.1)}{0.0.0.0:0},MANAGED}
+DEBUG [2021-07-29 13:55:04,505] (ContainerLifeCycle.java[addBean]:412) - Server@519b7142{STOPPED}[9.4.31.v20200723] added {ServerConnector@56075a5b{HTTP/1.1, (http/1.1)}{0.0.0.0:5280},AUTO}
+DEBUG [2021-07-29 13:55:04,506] (ContainerLifeCycle.java[addBean]:412) - Server@519b7142{STOPPED}[9.4.31.v20200723] added {spark.embeddedserver.jetty.JettyHandler76742151==dftMaxIdleSec=-1,MANAGED}
+ INFO [2021-07-29 13:55:04,506] (EmbeddedJettyServer.java[ignite]:142) - == Spark has ignited ...
+ INFO [2021-07-29 13:55:04,506] (EmbeddedJettyServer.java[ignite]:146) - >> Listening on 0.0.0.0:5280
+DEBUG [2021-07-29 13:55:04,507] (AbstractLifeCycle.java[setStarting]:200) - starting Server@519b7142{STOPPED}[9.4.31.v20200723]
+DEBUG [2021-07-29 13:55:04,508] (ContainerLifeCycle.java[addBean]:412) - Server@519b7142{STARTING}[9.4.31.v20200723] added {ErrorHandler@143d1b3f{STOPPED},AUTO}
+ INFO [2021-07-29 13:55:04,508] (Server.java[doStart]:360) - jetty-9.4.31.v20200723; built: 2020-07-23T17:57:36.812Z; git: 450ba27947e13e66baa8cd1ce7e85a4461cacc1d; jvm 16.0.1+9
+DEBUG [2021-07-29 13:55:04,511] (AbstractHandler.java[doStart]:94) - starting Server@519b7142{STARTING}[9.4.31.v20200723]
+DEBUG [2021-07-29 13:55:04,511] (AbstractLifeCycle.java[setStarting]:200) - starting QueuedThreadPool[qtp2135904784]@7f4f5210{STOPPED,8<=0<=200,i=0,r=-1,q=0}[NO_TRY]
+DEBUG [2021-07-29 13:55:04,512] (ReservedThreadExecutor.java[<init>]:85) - ReservedThreadExecutor@45fcdd93{s=0/8,p=0}
+DEBUG [2021-07-29 13:55:04,512] (ContainerLifeCycle.java[addBean]:412) - QueuedThreadPool[qtp2135904784]@7f4f5210{STARTING,8<=0<=200,i=0,r=-1,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}] added {ReservedThreadExecutor@45fcdd93{s=0/8,p=0},AUTO}
+DEBUG [2021-07-29 13:55:04,512] (AbstractLifeCycle.java[setStarting]:200) - starting ReservedThreadExecutor@45fcdd93{s=0/8,p=0}
+DEBUG [2021-07-29 13:55:04,513] (AbstractLifeCycle.java[setStarted]:190) - STARTED @785ms ReservedThreadExecutor@45fcdd93{s=0/8,p=0}
+DEBUG [2021-07-29 13:55:04,513] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp2135904784-19,5,main]
+DEBUG [2021-07-29 13:55:04,513] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp2135904784-20,5,main]
+DEBUG [2021-07-29 13:55:04,513] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp2135904784-21,5,main]
+DEBUG [2021-07-29 13:55:04,513] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp2135904784-22,5,main]
+DEBUG [2021-07-29 13:55:04,513] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp2135904784-23,5,main]
+DEBUG [2021-07-29 13:55:04,513] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp2135904784]@7f4f5210{STARTING,8<=3<=200,i=3,r=-1,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:04,514] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp2135904784-24,5,main]
+DEBUG [2021-07-29 13:55:04,514] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp2135904784]@7f4f5210{STARTING,8<=2<=200,i=2,r=-1,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:04,514] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp2135904784-25,5,main]
+DEBUG [2021-07-29 13:55:04,514] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp2135904784-26,5,main]
+DEBUG [2021-07-29 13:55:04,514] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp2135904784]@7f4f5210{STARTING,8<=5<=200,i=5,r=-1,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:04,514] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp2135904784]@7f4f5210{STARTING,8<=4<=200,i=4,r=-1,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:04,514] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp2135904784]@7f4f5210{STARTING,8<=6<=200,i=6,r=-1,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:04,515] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:04,515] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp2135904784]@7f4f5210{STARTING,8<=7<=200,i=7,r=-1,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:04,515] (AbstractLifeCycle.java[setStarted]:190) - STARTED @786ms QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:04,515] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp2135904784]@7f4f5210{STARTING,8<=8<=200,i=8,r=-1,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:04,515] (AbstractLifeCycle.java[setStarting]:200) - starting spark.embeddedserver.jetty.JettyHandler76742151==dftMaxIdleSec=-1
+DEBUG [2021-07-29 13:55:04,517] (ContainerLifeCycle.java[addBean]:412) - spark.embeddedserver.jetty.JettyHandler76742151==dftMaxIdleSec=-1 added {org.eclipse.jetty.server.session.DefaultSessionCache@1d538a91[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false],AUTO}
+DEBUG [2021-07-29 13:55:04,518] (ContainerLifeCycle.java[addBean]:412) - org.eclipse.jetty.server.session.DefaultSessionCache@1d538a91[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false] added {org.eclipse.jetty.server.session.NullSessionDataStore@6b6a5901[passivating=false,graceSec=3600],AUTO}
+DEBUG [2021-07-29 13:55:04,518] (AbstractLifeCycle.java[setStarting]:200) - starting DefaultSessionIdManager@6deaf0a6{STOPPED}[worker=null]
+ INFO [2021-07-29 13:55:04,518] (DefaultSessionIdManager.java[doStart]:334) - DefaultSessionIdManager workerName=node0
+ INFO [2021-07-29 13:55:04,518] (DefaultSessionIdManager.java[doStart]:339) - No SessionScavenger set, using defaults
+DEBUG [2021-07-29 13:55:04,519] (ContainerLifeCycle.java[addBean]:412) - DefaultSessionIdManager@6deaf0a6{STARTING}[worker=node0] added {HouseKeeper@59a44f5e{STOPPED}[interval=600000, ownscheduler=false],MANAGED}
+DEBUG [2021-07-29 13:55:04,519] (AbstractLifeCycle.java[setStarting]:200) - starting HouseKeeper@59a44f5e{STOPPED}[interval=600000, ownscheduler=false]
+DEBUG [2021-07-29 13:55:04,519] (AbstractLifeCycle.java[setStarting]:200) - starting ScheduledExecutorScheduler@1969bf36{STOPPED}
+DEBUG [2021-07-29 13:55:04,520] (AbstractLifeCycle.java[setStarted]:190) - STARTED @792ms ScheduledExecutorScheduler@1969bf36{STARTED}
+DEBUG [2021-07-29 13:55:04,520] (HouseKeeper.java[findScheduler]:117) - Using own scheduler for scavenging
+ INFO [2021-07-29 13:55:04,520] (HouseKeeper.java[startScavenging]:140) - node0 Scavenging every 600000ms
+DEBUG [2021-07-29 13:55:04,520] (AbstractLifeCycle.java[setStarted]:190) - STARTED @793ms HouseKeeper@59a44f5e{STARTED}[interval=600000, ownscheduler=true]
+DEBUG [2021-07-29 13:55:04,521] (AbstractLifeCycle.java[setStarted]:190) - STARTED @793ms DefaultSessionIdManager@6deaf0a6{STARTED}[worker=node0]
+DEBUG [2021-07-29 13:55:04,521] (ContainerLifeCycle.java[addBean]:412) - Server@519b7142{STARTING}[9.4.31.v20200723] added {DefaultSessionIdManager@6deaf0a6{STARTED}[worker=node0],MANAGED}
+DEBUG [2021-07-29 13:55:04,521] (ContainerLifeCycle.java[addBean]:412) - spark.embeddedserver.jetty.JettyHandler76742151==dftMaxIdleSec=-1 added {DefaultSessionIdManager@6deaf0a6{STARTED}[worker=node0],UNMANAGED}
+DEBUG [2021-07-29 13:55:04,521] (AbstractLifeCycle.java[setStarting]:200) - starting ScheduledExecutorScheduler@666091d9{STOPPED}
+DEBUG [2021-07-29 13:55:04,521] (AbstractLifeCycle.java[setStarted]:190) - STARTED @793ms ScheduledExecutorScheduler@666091d9{STARTED}
+DEBUG [2021-07-29 13:55:04,521] (AbstractHandler.java[doStart]:94) - starting spark.embeddedserver.jetty.JettyHandler76742151==dftMaxIdleSec=-1
+DEBUG [2021-07-29 13:55:04,521] (AbstractLifeCycle.java[setStarting]:200) - starting org.eclipse.jetty.server.session.DefaultSessionCache@1d538a91[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false]
+DEBUG [2021-07-29 13:55:04,522] (AbstractLifeCycle.java[setStarting]:200) - starting org.eclipse.jetty.server.session.NullSessionDataStore@6b6a5901[passivating=false,graceSec=3600]
+DEBUG [2021-07-29 13:55:04,522] (AbstractLifeCycle.java[setStarted]:190) - STARTED @794ms org.eclipse.jetty.server.session.NullSessionDataStore@6b6a5901[passivating=false,graceSec=3600]
+DEBUG [2021-07-29 13:55:04,522] (AbstractLifeCycle.java[setStarted]:190) - STARTED @794ms org.eclipse.jetty.server.session.DefaultSessionCache@1d538a91[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false]
+DEBUG [2021-07-29 13:55:04,522] (AbstractLifeCycle.java[setStarted]:190) - STARTED @794ms spark.embeddedserver.jetty.JettyHandler76742151==dftMaxIdleSec=-1
+DEBUG [2021-07-29 13:55:04,522] (AbstractLifeCycle.java[setStarting]:200) - starting ErrorHandler@143d1b3f{STOPPED}
+DEBUG [2021-07-29 13:55:04,522] (AbstractHandler.java[doStart]:94) - starting ErrorHandler@143d1b3f{STARTING}
+DEBUG [2021-07-29 13:55:04,522] (AbstractLifeCycle.java[setStarted]:190) - STARTED @794ms ErrorHandler@143d1b3f{STARTED}
+DEBUG [2021-07-29 13:55:04,522] (AbstractLifeCycle.java[setStarting]:200) - starting ServerConnector@56075a5b{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+DEBUG [2021-07-29 13:55:04,526] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@56075a5b{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {sun.nio.ch.ServerSocketChannelImpl[/[0:0:0:0:0:0:0:0]:5280],POJO}
+DEBUG [2021-07-29 13:55:04,526] (AbstractLifeCycle.java[setStarting]:200) - starting ScheduledExecutorScheduler@9ec0502{STOPPED}
+DEBUG [2021-07-29 13:55:04,527] (AbstractLifeCycle.java[setStarted]:190) - STARTED @799ms ScheduledExecutorScheduler@9ec0502{STARTED}
+DEBUG [2021-07-29 13:55:04,527] (AbstractLifeCycle.java[setStarting]:200) - starting HttpConnectionFactory@3874ad44[HTTP/1.1]
+DEBUG [2021-07-29 13:55:04,527] (AbstractLifeCycle.java[setStarted]:190) - STARTED @799ms HttpConnectionFactory@3874ad44[HTTP/1.1]
+DEBUG [2021-07-29 13:55:04,527] (AbstractLifeCycle.java[setStarting]:200) - starting SelectorManager@ServerConnector@56075a5b{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+DEBUG [2021-07-29 13:55:04,530] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@73353ba1/SelectorProducer@5292479/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.529982+09:00 added {SelectorProducer@5292479,POJO}
+DEBUG [2021-07-29 13:55:04,530] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@73353ba1/SelectorProducer@5292479/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.530647+09:00 added {QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}],UNMANAGED}
+DEBUG [2021-07-29 13:55:04,531] (EatWhatYouKill.java[<init>]:93) - EatWhatYouKill@73353ba1/SelectorProducer@5292479/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.531299+09:00 created
+DEBUG [2021-07-29 13:55:04,531] (ContainerLifeCycle.java[addBean]:412) - ManagedSelector@7c3858ef{STOPPED} id=0 keys=-1 selected=-1 updates=0 added {EatWhatYouKill@73353ba1/SelectorProducer@5292479/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.531647+09:00,MANAGED}
+DEBUG [2021-07-29 13:55:04,531] (ContainerLifeCycle.java[addBean]:412) - SelectorManager@ServerConnector@56075a5b{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {ManagedSelector@7c3858ef{STOPPED} id=0 keys=-1 selected=-1 updates=0,AUTO}
+DEBUG [2021-07-29 13:55:04,532] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@529b0eea/SelectorProducer@2d77717b/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.53214+09:00 added {SelectorProducer@2d77717b,POJO}
+DEBUG [2021-07-29 13:55:04,532] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@529b0eea/SelectorProducer@2d77717b/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.532502+09:00 added {QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}],UNMANAGED}
+DEBUG [2021-07-29 13:55:04,532] (EatWhatYouKill.java[<init>]:93) - EatWhatYouKill@529b0eea/SelectorProducer@2d77717b/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.53294+09:00 created
+DEBUG [2021-07-29 13:55:04,533] (ContainerLifeCycle.java[addBean]:412) - ManagedSelector@62c2c1fb{STOPPED} id=1 keys=-1 selected=-1 updates=0 added {EatWhatYouKill@529b0eea/SelectorProducer@2d77717b/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.533232+09:00,MANAGED}
+DEBUG [2021-07-29 13:55:04,533] (ContainerLifeCycle.java[addBean]:412) - SelectorManager@ServerConnector@56075a5b{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {ManagedSelector@62c2c1fb{STOPPED} id=1 keys=-1 selected=-1 updates=0,AUTO}
+DEBUG [2021-07-29 13:55:04,533] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@5c83026c/SelectorProducer@5665bb48/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.533865+09:00 added {SelectorProducer@5665bb48,POJO}
+DEBUG [2021-07-29 13:55:04,534] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@5c83026c/SelectorProducer@5665bb48/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.534125+09:00 added {QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}],UNMANAGED}
+DEBUG [2021-07-29 13:55:04,534] (EatWhatYouKill.java[<init>]:93) - EatWhatYouKill@5c83026c/SelectorProducer@5665bb48/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.534645+09:00 created
+DEBUG [2021-07-29 13:55:04,535] (ContainerLifeCycle.java[addBean]:412) - ManagedSelector@408fe456{STOPPED} id=2 keys=-1 selected=-1 updates=0 added {EatWhatYouKill@5c83026c/SelectorProducer@5665bb48/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.534992+09:00,MANAGED}
+DEBUG [2021-07-29 13:55:04,535] (ContainerLifeCycle.java[addBean]:412) - SelectorManager@ServerConnector@56075a5b{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {ManagedSelector@408fe456{STOPPED} id=2 keys=-1 selected=-1 updates=0,AUTO}
+DEBUG [2021-07-29 13:55:04,535] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@34b638a5/SelectorProducer@7062dc3d/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.535391+09:00 added {SelectorProducer@7062dc3d,POJO}
+DEBUG [2021-07-29 13:55:04,536] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@34b638a5/SelectorProducer@7062dc3d/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.53578+09:00 added {QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}],UNMANAGED}
+DEBUG [2021-07-29 13:55:04,536] (EatWhatYouKill.java[<init>]:93) - EatWhatYouKill@34b638a5/SelectorProducer@7062dc3d/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.536213+09:00 created
+DEBUG [2021-07-29 13:55:04,536] (ContainerLifeCycle.java[addBean]:412) - ManagedSelector@ba68682{STOPPED} id=3 keys=-1 selected=-1 updates=0 added {EatWhatYouKill@34b638a5/SelectorProducer@7062dc3d/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.536583+09:00,MANAGED}
+DEBUG [2021-07-29 13:55:04,536] (ContainerLifeCycle.java[addBean]:412) - SelectorManager@ServerConnector@56075a5b{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {ManagedSelector@ba68682{STOPPED} id=3 keys=-1 selected=-1 updates=0,AUTO}
+DEBUG [2021-07-29 13:55:04,536] (AbstractLifeCycle.java[setStarting]:200) - starting ManagedSelector@7c3858ef{STOPPED} id=0 keys=-1 selected=-1 updates=0
+DEBUG [2021-07-29 13:55:04,537] (AbstractLifeCycle.java[setStarting]:200) - starting EatWhatYouKill@73353ba1/SelectorProducer@5292479/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.537144+09:00
+DEBUG [2021-07-29 13:55:04,537] (AbstractLifeCycle.java[setStarted]:190) - STARTED @809ms EatWhatYouKill@73353ba1/SelectorProducer@5292479/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.537373+09:00
+DEBUG [2021-07-29 13:55:04,540] (QueuedThreadPool.java[execute]:543) - queue org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003aae18@45cc352e startThread=0
+DEBUG [2021-07-29 13:55:04,540] (QueuedThreadPool.java[run]:937) - run org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003aae18@45cc352e in QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=7,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:04,541] (ManagedSelector.java[submit]:252) - Queued change lazy=false org.eclipse.jetty.io.ManagedSelector$Start@7ca6795 on ManagedSelector@7c3858ef{STARTING} id=0 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:55:04,541] (EatWhatYouKill.java[tryProduce]:141) - EatWhatYouKill@73353ba1/SelectorProducer@5292479/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=7,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.541415+09:00 tryProduce false
+DEBUG [2021-07-29 13:55:04,542] (ManagedSelector.java[processUpdates]:524) - updateable 1
+DEBUG [2021-07-29 13:55:04,542] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ManagedSelector$Start@7ca6795
+DEBUG [2021-07-29 13:55:04,542] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:55:04,542] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@54db2135 waiting with 0 keys
+DEBUG [2021-07-29 13:55:04,542] (AbstractLifeCycle.java[setStarted]:190) - STARTED @814ms ManagedSelector@7c3858ef{STARTED} id=0 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:55:04,542] (AbstractLifeCycle.java[setStarting]:200) - starting ManagedSelector@62c2c1fb{STOPPED} id=1 keys=-1 selected=-1 updates=0
+DEBUG [2021-07-29 13:55:04,542] (AbstractLifeCycle.java[setStarting]:200) - starting EatWhatYouKill@529b0eea/SelectorProducer@2d77717b/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=7,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.542743+09:00
+DEBUG [2021-07-29 13:55:04,543] (AbstractLifeCycle.java[setStarted]:190) - STARTED @815ms EatWhatYouKill@529b0eea/SelectorProducer@2d77717b/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=7,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.543279+09:00
+DEBUG [2021-07-29 13:55:04,543] (QueuedThreadPool.java[execute]:543) - queue org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003aae18@286c3397 startThread=0
+DEBUG [2021-07-29 13:55:04,543] (ManagedSelector.java[submit]:252) - Queued change lazy=false org.eclipse.jetty.io.ManagedSelector$Start@4847a6ed on ManagedSelector@62c2c1fb{STARTING} id=1 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:55:04,543] (QueuedThreadPool.java[run]:937) - run org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003aae18@286c3397 in QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=6,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:04,543] (EatWhatYouKill.java[tryProduce]:141) - EatWhatYouKill@529b0eea/SelectorProducer@2d77717b/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=6,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.543856+09:00 tryProduce false
+DEBUG [2021-07-29 13:55:04,543] (ManagedSelector.java[processUpdates]:524) - updateable 1
+DEBUG [2021-07-29 13:55:04,543] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ManagedSelector$Start@4847a6ed
+DEBUG [2021-07-29 13:55:04,543] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:55:04,544] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@4a76ec23 waiting with 0 keys
+DEBUG [2021-07-29 13:55:04,544] (AbstractLifeCycle.java[setStarted]:190) - STARTED @816ms ManagedSelector@62c2c1fb{STARTED} id=1 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:55:04,544] (AbstractLifeCycle.java[setStarting]:200) - starting ManagedSelector@408fe456{STOPPED} id=2 keys=-1 selected=-1 updates=0
+DEBUG [2021-07-29 13:55:04,544] (AbstractLifeCycle.java[setStarting]:200) - starting EatWhatYouKill@5c83026c/SelectorProducer@5665bb48/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=6,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.54432+09:00
+DEBUG [2021-07-29 13:55:04,544] (AbstractLifeCycle.java[setStarted]:190) - STARTED @816ms EatWhatYouKill@5c83026c/SelectorProducer@5665bb48/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=6,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.544548+09:00
+DEBUG [2021-07-29 13:55:04,544] (QueuedThreadPool.java[execute]:543) - queue org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003aae18@4ce1a0ec startThread=0
+DEBUG [2021-07-29 13:55:04,544] (ManagedSelector.java[submit]:252) - Queued change lazy=false org.eclipse.jetty.io.ManagedSelector$Start@4089f811 on ManagedSelector@408fe456{STARTING} id=2 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:55:04,544] (QueuedThreadPool.java[run]:937) - run org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003aae18@4ce1a0ec in QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=5,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:04,545] (EatWhatYouKill.java[tryProduce]:141) - EatWhatYouKill@5c83026c/SelectorProducer@5665bb48/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=5,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.545003+09:00 tryProduce false
+DEBUG [2021-07-29 13:55:04,545] (ManagedSelector.java[processUpdates]:524) - updateable 1
+DEBUG [2021-07-29 13:55:04,545] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ManagedSelector$Start@4089f811
+DEBUG [2021-07-29 13:55:04,545] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:55:04,545] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@6129873 waiting with 0 keys
+DEBUG [2021-07-29 13:55:04,545] (AbstractLifeCycle.java[setStarted]:190) - STARTED @817ms ManagedSelector@408fe456{STARTED} id=2 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:55:04,545] (AbstractLifeCycle.java[setStarting]:200) - starting ManagedSelector@ba68682{STOPPED} id=3 keys=-1 selected=-1 updates=0
+DEBUG [2021-07-29 13:55:04,545] (AbstractLifeCycle.java[setStarting]:200) - starting EatWhatYouKill@34b638a5/SelectorProducer@7062dc3d/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=5,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.545525+09:00
+DEBUG [2021-07-29 13:55:04,545] (AbstractLifeCycle.java[setStarted]:190) - STARTED @817ms EatWhatYouKill@34b638a5/SelectorProducer@7062dc3d/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=5,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.545725+09:00
+DEBUG [2021-07-29 13:55:04,545] (QueuedThreadPool.java[execute]:543) - queue org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003aae18@9b09b1c startThread=0
+DEBUG [2021-07-29 13:55:04,546] (QueuedThreadPool.java[run]:937) - run org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003aae18@9b09b1c in QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=4,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:04,546] (ManagedSelector.java[submit]:252) - Queued change lazy=false org.eclipse.jetty.io.ManagedSelector$Start@7c352409 on ManagedSelector@ba68682{STARTING} id=3 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:55:04,546] (EatWhatYouKill.java[tryProduce]:141) - EatWhatYouKill@34b638a5/SelectorProducer@7062dc3d/IDLE/p=false/QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=4,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:04.546277+09:00 tryProduce false
+DEBUG [2021-07-29 13:55:04,546] (ManagedSelector.java[processUpdates]:524) - updateable 1
+DEBUG [2021-07-29 13:55:04,546] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ManagedSelector$Start@7c352409
+DEBUG [2021-07-29 13:55:04,546] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:55:04,546] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@679c6a waiting with 0 keys
+DEBUG [2021-07-29 13:55:04,546] (AbstractLifeCycle.java[setStarted]:190) - STARTED @818ms ManagedSelector@ba68682{STARTED} id=3 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:55:04,546] (AbstractLifeCycle.java[setStarted]:190) - STARTED @818ms SelectorManager@ServerConnector@56075a5b{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+DEBUG [2021-07-29 13:55:04,547] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@56075a5b{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {acceptor-0@6a7158de,POJO}
+DEBUG [2021-07-29 13:55:04,547] (QueuedThreadPool.java[execute]:543) - queue acceptor-0@6a7158de startThread=0
+ INFO [2021-07-29 13:55:04,547] (AbstractConnector.java[doStart]:331) - Started ServerConnector@56075a5b{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+DEBUG [2021-07-29 13:55:04,547] (QueuedThreadPool.java[run]:937) - run acceptor-0@6a7158de in QueuedThreadPool[qtp2135904784]@7f4f5210{STARTED,8<=8<=200,i=3,r=8,q=0}[ReservedThreadExecutor@45fcdd93{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:04,547] (AbstractLifeCycle.java[setStarted]:190) - STARTED @819ms ServerConnector@56075a5b{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+ INFO [2021-07-29 13:55:04,547] (Server.java[doStart]:400) - Started @819ms
+DEBUG [2021-07-29 13:55:04,547] (AbstractLifeCycle.java[setStarted]:190) - STARTED @820ms Server@519b7142{STARTED}[9.4.31.v20200723]
+ INFO [2021-07-29 13:55:31,802] (SynbagConfig.java[init]:73) - ===========================
+ INFO [2021-07-29 13:55:31,803] (SynbagConfig.java[init]:74) - Config sharding tables 
+ INFO [2021-07-29 13:55:31,806] (SynbagConfig.java[init]:83) - [datanodes] ds${0..1}.user
+ INFO [2021-07-29 13:55:31,806] (SynbagConfig.java[init]:84) - [shardingTable] ShardingTable(realTableName=user, shardingColumn=userid, shardingMethod=crc32, preciseShardingAlgorithm=net.gywn.algorithm.PreciseShardingCRC32@72437d8d)
+ INFO [2021-07-29 13:55:31,806] (SynbagConfig.java[init]:83) - [datanodes] ds${0..1}.user_log
+ INFO [2021-07-29 13:55:31,806] (SynbagConfig.java[init]:84) - [shardingTable] ShardingTable(realTableName=user_log, shardingColumn=userid, shardingMethod=crc32, preciseShardingAlgorithm=net.gywn.algorithm.PreciseShardingCRC32@29a0cdb)
+ INFO [2021-07-29 13:55:31,806] (SynbagConfig.java[init]:99) - ===========================
+ INFO [2021-07-29 13:55:31,806] (SynbagConfig.java[init]:100) - Config broastcast tables 
+ INFO [2021-07-29 13:55:31,806] (SynbagConfig.java[init]:103) - [broadcastTable] config
+ INFO [2021-07-29 13:55:32,161] (ConfigurationLogger.java[log]:104) - ShardingRuleConfiguration:
+bindingTables:
+- user
+- user_log
+broadcastTables:
+- config
+defaultDataSourceName: ds0
+tables:
+  user:
+    actualDataNodes: ds${0..1}.user
+    databaseStrategy:
+      standard:
+        preciseAlgorithmClassName: net.gywn.algorithm.PreciseShardingCRC32
+        shardingColumn: userid
+    logicTable: user
+  user_log:
+    actualDataNodes: ds${0..1}.user_log
+    databaseStrategy:
+      standard:
+        preciseAlgorithmClassName: net.gywn.algorithm.PreciseShardingCRC32
+        shardingColumn: userid
+    logicTable: user_log
+
+ INFO [2021-07-29 13:55:32,171] (ShardingMetaDataLoader.java[loadShardingSchemaMetaData]:131) - Loading 2 logic tables' meta data.
+ INFO [2021-07-29 13:55:32,201] (SchemaMetaDataLoader.java[load]:70) - Loading 3 tables' meta data.
+ INFO [2021-07-29 13:55:32,224] (MultipleDataSourcesRuntimeContext.java[createMetaData]:59) - Meta data load finished, cost 63 milliseconds.
+ INFO [2021-07-29 13:55:32,233] (SynbagConfig.java[init]:116) - shardingDatasource created
+ INFO [2021-07-29 13:55:32,233] (SynbagConfig.java[loadAndConfigSynbag]:57) - SynbagConfig(shardingRuleConfig=org.apache.shardingsphere.api.config.sharding.ShardingRuleConfiguration@cbc8d0f, dataSources=[org.apache.commons.dbcp2.BasicDataSource@5c1f6d57, org.apache.commons.dbcp2.BasicDataSource@f288c14], shardingTables={user=ShardingTable(realTableName=user, shardingColumn=userid, shardingMethod=crc32, preciseShardingAlgorithm=net.gywn.algorithm.PreciseShardingCRC32@72437d8d), user_log=ShardingTable(realTableName=user_log, shardingColumn=userid, shardingMethod=crc32, preciseShardingAlgorithm=net.gywn.algorithm.PreciseShardingCRC32@29a0cdb)}, broadcastTables=[config], shardingDatasource=org.apache.shardingsphere.shardingjdbc.jdbc.core.datasource.ShardingDataSource@6794ac0b)
+ INFO [2021-07-29 13:55:32,236] (SynbagServer.java[call]:79) - 0.0.0.0:5280/t/user
+DEBUG [2021-07-29 13:55:32,238] (Routes.java[add]:191) - Adds route: post, /t/user, spark.RouteImpl$1@2caa5d7c
+ INFO [2021-07-29 13:55:32,238] (SynbagServer.java[call]:79) - 0.0.0.0:5280/t/user_log
+DEBUG [2021-07-29 13:55:32,238] (Routes.java[add]:191) - Adds route: post, /t/user_log, spark.RouteImpl$1@5e671e20
+ INFO [2021-07-29 13:55:32,238] (SynbagServer.java[call]:79) - 0.0.0.0:5280/t/config
+DEBUG [2021-07-29 13:55:32,238] (Routes.java[add]:191) - Adds route: post, /t/config, spark.RouteImpl$1@3eabe84a
+ INFO [2021-07-29 13:55:32,238] (SynbagServer.java[call]:91) - 0.0.0.0:5280/q
+DEBUG [2021-07-29 13:55:32,238] (Routes.java[add]:191) - Adds route: post, /q, spark.RouteImpl$1@38fc5554
+DEBUG [2021-07-29 13:55:32,248] (Log.java[initialized]:159) - Logging to org.slf4j.impl.Log4jLoggerAdapter(org.eclipse.jetty.util.log) via org.eclipse.jetty.util.log.Slf4jLog
+ INFO [2021-07-29 13:55:32,250] (Log.java[initialized]:169) - Logging initialized @743ms to org.eclipse.jetty.util.log.Slf4jLog
+DEBUG [2021-07-29 13:55:32,257] (ContainerLifeCycle.java[addBean]:412) - Server@170177c4{STOPPED}[9.4.31.v20200723] added {QueuedThreadPool[qtp235952080]@e1057d0{STOPPED,8<=0<=200,i=0,r=-1,q=0}[NO_TRY],AUTO}
+DEBUG [2021-07-29 13:55:32,266] (ContainerLifeCycle.java[addBean]:412) - HttpConnectionFactory@68d71aca[HTTP/1.1] added {HttpConfiguration@374c3899{32768/8192,8192/8192,https://:0,[ForwardedRequestCustomizer@42d1500d]},POJO}
+DEBUG [2021-07-29 13:55:32,270] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@1ee804fe{null, ()}{0.0.0.0:0} added {Server@170177c4{STOPPED}[9.4.31.v20200723],UNMANAGED}
+DEBUG [2021-07-29 13:55:32,270] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@1ee804fe{null, ()}{0.0.0.0:0} added {QueuedThreadPool[qtp235952080]@e1057d0{STOPPED,8<=0<=200,i=0,r=-1,q=0}[NO_TRY],AUTO}
+DEBUG [2021-07-29 13:55:32,270] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@1ee804fe{null, ()}{0.0.0.0:0} added {ScheduledExecutorScheduler@5d4f8555{STOPPED},AUTO}
+DEBUG [2021-07-29 13:55:32,270] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@1ee804fe{null, ()}{0.0.0.0:0} added {org.eclipse.jetty.io.ArrayByteBufferPool@4824d691,POJO}
+DEBUG [2021-07-29 13:55:32,271] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@1ee804fe{null, (http/1.1)}{0.0.0.0:0} added {HttpConnectionFactory@68d71aca[HTTP/1.1],AUTO}
+DEBUG [2021-07-29 13:55:32,271] (AbstractConnector.java[addConnectionFactory]:484) - ServerConnector@1ee804fe{HTTP/1.1, (http/1.1)}{0.0.0.0:0} added HttpConnectionFactory@68d71aca[HTTP/1.1]
+DEBUG [2021-07-29 13:55:32,272] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@1ee804fe{HTTP/1.1, (http/1.1)}{0.0.0.0:0} added {SelectorManager@ServerConnector@1ee804fe{HTTP/1.1, (http/1.1)}{0.0.0.0:0},MANAGED}
+DEBUG [2021-07-29 13:55:32,273] (ContainerLifeCycle.java[addBean]:412) - Server@170177c4{STOPPED}[9.4.31.v20200723] added {ServerConnector@1ee804fe{HTTP/1.1, (http/1.1)}{0.0.0.0:5280},AUTO}
+DEBUG [2021-07-29 13:55:32,273] (ContainerLifeCycle.java[addBean]:412) - Server@170177c4{STOPPED}[9.4.31.v20200723] added {spark.embeddedserver.jetty.JettyHandler67843395==dftMaxIdleSec=-1,MANAGED}
+ INFO [2021-07-29 13:55:32,273] (EmbeddedJettyServer.java[ignite]:142) - == Spark has ignited ...
+ INFO [2021-07-29 13:55:32,273] (EmbeddedJettyServer.java[ignite]:146) - >> Listening on 0.0.0.0:5280
+DEBUG [2021-07-29 13:55:32,274] (AbstractLifeCycle.java[setStarting]:200) - starting Server@170177c4{STOPPED}[9.4.31.v20200723]
+DEBUG [2021-07-29 13:55:32,275] (ContainerLifeCycle.java[addBean]:412) - Server@170177c4{STARTING}[9.4.31.v20200723] added {ErrorHandler@1542b21a{STOPPED},AUTO}
+ INFO [2021-07-29 13:55:32,275] (Server.java[doStart]:360) - jetty-9.4.31.v20200723; built: 2020-07-23T17:57:36.812Z; git: 450ba27947e13e66baa8cd1ce7e85a4461cacc1d; jvm 16.0.1+9
+DEBUG [2021-07-29 13:55:32,278] (AbstractHandler.java[doStart]:94) - starting Server@170177c4{STARTING}[9.4.31.v20200723]
+DEBUG [2021-07-29 13:55:32,279] (AbstractLifeCycle.java[setStarting]:200) - starting QueuedThreadPool[qtp235952080]@e1057d0{STOPPED,8<=0<=200,i=0,r=-1,q=0}[NO_TRY]
+DEBUG [2021-07-29 13:55:32,279] (ReservedThreadExecutor.java[<init>]:85) - ReservedThreadExecutor@35e6e8c{s=0/8,p=0}
+DEBUG [2021-07-29 13:55:32,280] (ContainerLifeCycle.java[addBean]:412) - QueuedThreadPool[qtp235952080]@e1057d0{STARTING,8<=0<=200,i=0,r=-1,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}] added {ReservedThreadExecutor@35e6e8c{s=0/8,p=0},AUTO}
+DEBUG [2021-07-29 13:55:32,280] (AbstractLifeCycle.java[setStarting]:200) - starting ReservedThreadExecutor@35e6e8c{s=0/8,p=0}
+DEBUG [2021-07-29 13:55:32,280] (AbstractLifeCycle.java[setStarted]:190) - STARTED @774ms ReservedThreadExecutor@35e6e8c{s=0/8,p=0}
+DEBUG [2021-07-29 13:55:32,281] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp235952080-19,5,main]
+DEBUG [2021-07-29 13:55:32,281] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp235952080-20,5,main]
+DEBUG [2021-07-29 13:55:32,281] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp235952080-21,5,main]
+DEBUG [2021-07-29 13:55:32,281] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp235952080-22,5,main]
+DEBUG [2021-07-29 13:55:32,281] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp235952080-23,5,main]
+DEBUG [2021-07-29 13:55:32,281] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp235952080]@e1057d0{STARTING,8<=2<=200,i=2,r=-1,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:32,281] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp235952080-24,5,main]
+DEBUG [2021-07-29 13:55:32,281] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp235952080-25,5,main]
+DEBUG [2021-07-29 13:55:32,282] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp235952080-26,5,main]
+DEBUG [2021-07-29 13:55:32,282] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp235952080]@e1057d0{STARTING,8<=6<=200,i=6,r=-1,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:32,282] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp235952080]@e1057d0{STARTING,8<=8<=200,i=8,r=-1,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:32,282] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp235952080]@e1057d0{STARTING,8<=7<=200,i=7,r=-1,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:32,283] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp235952080]@e1057d0{STARTING,8<=5<=200,i=5,r=-1,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:32,283] (AbstractLifeCycle.java[setStarted]:190) - STARTED @775ms QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:32,283] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp235952080]@e1057d0{STARTING,8<=3<=200,i=3,r=-1,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:32,283] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp235952080]@e1057d0{STARTING,8<=4<=200,i=4,r=-1,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:32,283] (AbstractLifeCycle.java[setStarting]:200) - starting spark.embeddedserver.jetty.JettyHandler67843395==dftMaxIdleSec=-1
+DEBUG [2021-07-29 13:55:32,283] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:32,285] (ContainerLifeCycle.java[addBean]:412) - spark.embeddedserver.jetty.JettyHandler67843395==dftMaxIdleSec=-1 added {org.eclipse.jetty.server.session.DefaultSessionCache@332db43a[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false],AUTO}
+DEBUG [2021-07-29 13:55:32,286] (ContainerLifeCycle.java[addBean]:412) - org.eclipse.jetty.server.session.DefaultSessionCache@332db43a[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false] added {org.eclipse.jetty.server.session.NullSessionDataStore@65b3b30b[passivating=false,graceSec=3600],AUTO}
+DEBUG [2021-07-29 13:55:32,286] (AbstractLifeCycle.java[setStarting]:200) - starting DefaultSessionIdManager@141be199{STOPPED}[worker=null]
+ INFO [2021-07-29 13:55:32,286] (DefaultSessionIdManager.java[doStart]:334) - DefaultSessionIdManager workerName=node0
+ INFO [2021-07-29 13:55:32,286] (DefaultSessionIdManager.java[doStart]:339) - No SessionScavenger set, using defaults
+DEBUG [2021-07-29 13:55:32,287] (ContainerLifeCycle.java[addBean]:412) - DefaultSessionIdManager@141be199{STARTING}[worker=node0] added {HouseKeeper@38b4d8be{STOPPED}[interval=600000, ownscheduler=false],MANAGED}
+DEBUG [2021-07-29 13:55:32,287] (AbstractLifeCycle.java[setStarting]:200) - starting HouseKeeper@38b4d8be{STOPPED}[interval=600000, ownscheduler=false]
+DEBUG [2021-07-29 13:55:32,287] (AbstractLifeCycle.java[setStarting]:200) - starting ScheduledExecutorScheduler@7133a33f{STOPPED}
+DEBUG [2021-07-29 13:55:32,288] (AbstractLifeCycle.java[setStarted]:190) - STARTED @781ms ScheduledExecutorScheduler@7133a33f{STARTED}
+DEBUG [2021-07-29 13:55:32,288] (HouseKeeper.java[findScheduler]:117) - Using own scheduler for scavenging
+ INFO [2021-07-29 13:55:32,288] (HouseKeeper.java[startScavenging]:140) - node0 Scavenging every 600000ms
+DEBUG [2021-07-29 13:55:32,288] (AbstractLifeCycle.java[setStarted]:190) - STARTED @782ms HouseKeeper@38b4d8be{STARTED}[interval=600000, ownscheduler=true]
+DEBUG [2021-07-29 13:55:32,289] (AbstractLifeCycle.java[setStarted]:190) - STARTED @782ms DefaultSessionIdManager@141be199{STARTED}[worker=node0]
+DEBUG [2021-07-29 13:55:32,289] (ContainerLifeCycle.java[addBean]:412) - Server@170177c4{STARTING}[9.4.31.v20200723] added {DefaultSessionIdManager@141be199{STARTED}[worker=node0],MANAGED}
+DEBUG [2021-07-29 13:55:32,289] (ContainerLifeCycle.java[addBean]:412) - spark.embeddedserver.jetty.JettyHandler67843395==dftMaxIdleSec=-1 added {DefaultSessionIdManager@141be199{STARTED}[worker=node0],UNMANAGED}
+DEBUG [2021-07-29 13:55:32,289] (AbstractLifeCycle.java[setStarting]:200) - starting ScheduledExecutorScheduler@3f5dcee6{STOPPED}
+DEBUG [2021-07-29 13:55:32,289] (AbstractLifeCycle.java[setStarted]:190) - STARTED @783ms ScheduledExecutorScheduler@3f5dcee6{STARTED}
+DEBUG [2021-07-29 13:55:32,289] (AbstractHandler.java[doStart]:94) - starting spark.embeddedserver.jetty.JettyHandler67843395==dftMaxIdleSec=-1
+DEBUG [2021-07-29 13:55:32,290] (AbstractLifeCycle.java[setStarting]:200) - starting org.eclipse.jetty.server.session.DefaultSessionCache@332db43a[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false]
+DEBUG [2021-07-29 13:55:32,290] (AbstractLifeCycle.java[setStarting]:200) - starting org.eclipse.jetty.server.session.NullSessionDataStore@65b3b30b[passivating=false,graceSec=3600]
+DEBUG [2021-07-29 13:55:32,290] (AbstractLifeCycle.java[setStarted]:190) - STARTED @783ms org.eclipse.jetty.server.session.NullSessionDataStore@65b3b30b[passivating=false,graceSec=3600]
+DEBUG [2021-07-29 13:55:32,290] (AbstractLifeCycle.java[setStarted]:190) - STARTED @783ms org.eclipse.jetty.server.session.DefaultSessionCache@332db43a[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false]
+DEBUG [2021-07-29 13:55:32,290] (AbstractLifeCycle.java[setStarted]:190) - STARTED @783ms spark.embeddedserver.jetty.JettyHandler67843395==dftMaxIdleSec=-1
+DEBUG [2021-07-29 13:55:32,290] (AbstractLifeCycle.java[setStarting]:200) - starting ErrorHandler@1542b21a{STOPPED}
+DEBUG [2021-07-29 13:55:32,290] (AbstractHandler.java[doStart]:94) - starting ErrorHandler@1542b21a{STARTING}
+DEBUG [2021-07-29 13:55:32,290] (AbstractLifeCycle.java[setStarted]:190) - STARTED @784ms ErrorHandler@1542b21a{STARTED}
+DEBUG [2021-07-29 13:55:32,290] (AbstractLifeCycle.java[setStarting]:200) - starting ServerConnector@1ee804fe{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+DEBUG [2021-07-29 13:55:32,293] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@1ee804fe{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {sun.nio.ch.ServerSocketChannelImpl[/[0:0:0:0:0:0:0:0]:5280],POJO}
+DEBUG [2021-07-29 13:55:32,293] (AbstractLifeCycle.java[setStarting]:200) - starting ScheduledExecutorScheduler@5d4f8555{STOPPED}
+DEBUG [2021-07-29 13:55:32,294] (AbstractLifeCycle.java[setStarted]:190) - STARTED @787ms ScheduledExecutorScheduler@5d4f8555{STARTED}
+DEBUG [2021-07-29 13:55:32,294] (AbstractLifeCycle.java[setStarting]:200) - starting HttpConnectionFactory@68d71aca[HTTP/1.1]
+DEBUG [2021-07-29 13:55:32,294] (AbstractLifeCycle.java[setStarted]:190) - STARTED @787ms HttpConnectionFactory@68d71aca[HTTP/1.1]
+DEBUG [2021-07-29 13:55:32,294] (AbstractLifeCycle.java[setStarting]:200) - starting SelectorManager@ServerConnector@1ee804fe{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+DEBUG [2021-07-29 13:55:32,299] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@6570ba67/SelectorProducer@70919f5a/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.29884+09:00 added {SelectorProducer@70919f5a,POJO}
+DEBUG [2021-07-29 13:55:32,299] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@6570ba67/SelectorProducer@70919f5a/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.29965+09:00 added {QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}],UNMANAGED}
+DEBUG [2021-07-29 13:55:32,300] (EatWhatYouKill.java[<init>]:93) - EatWhatYouKill@6570ba67/SelectorProducer@70919f5a/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.30008+09:00 created
+DEBUG [2021-07-29 13:55:32,300] (ContainerLifeCycle.java[addBean]:412) - ManagedSelector@509c634f{STOPPED} id=0 keys=-1 selected=-1 updates=0 added {EatWhatYouKill@6570ba67/SelectorProducer@70919f5a/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.300523+09:00,MANAGED}
+DEBUG [2021-07-29 13:55:32,300] (ContainerLifeCycle.java[addBean]:412) - SelectorManager@ServerConnector@1ee804fe{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {ManagedSelector@509c634f{STOPPED} id=0 keys=-1 selected=-1 updates=0,AUTO}
+DEBUG [2021-07-29 13:55:32,301] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@4ea764b5/SelectorProducer@63f9483a/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.300988+09:00 added {SelectorProducer@63f9483a,POJO}
+DEBUG [2021-07-29 13:55:32,301] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@4ea764b5/SelectorProducer@63f9483a/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.301345+09:00 added {QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}],UNMANAGED}
+DEBUG [2021-07-29 13:55:32,301] (EatWhatYouKill.java[<init>]:93) - EatWhatYouKill@4ea764b5/SelectorProducer@63f9483a/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.301745+09:00 created
+DEBUG [2021-07-29 13:55:32,302] (ContainerLifeCycle.java[addBean]:412) - ManagedSelector@ea55c80{STOPPED} id=1 keys=-1 selected=-1 updates=0 added {EatWhatYouKill@4ea764b5/SelectorProducer@63f9483a/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.302095+09:00,MANAGED}
+DEBUG [2021-07-29 13:55:32,302] (ContainerLifeCycle.java[addBean]:412) - SelectorManager@ServerConnector@1ee804fe{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {ManagedSelector@ea55c80{STOPPED} id=1 keys=-1 selected=-1 updates=0,AUTO}
+DEBUG [2021-07-29 13:55:32,302] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@3d10c000/SelectorProducer@486789db/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.302545+09:00 added {SelectorProducer@486789db,POJO}
+DEBUG [2021-07-29 13:55:32,303] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@3d10c000/SelectorProducer@486789db/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.302788+09:00 added {QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}],UNMANAGED}
+DEBUG [2021-07-29 13:55:32,303] (EatWhatYouKill.java[<init>]:93) - EatWhatYouKill@3d10c000/SelectorProducer@486789db/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.303188+09:00 created
+DEBUG [2021-07-29 13:55:32,303] (ContainerLifeCycle.java[addBean]:412) - ManagedSelector@61f6b075{STOPPED} id=2 keys=-1 selected=-1 updates=0 added {EatWhatYouKill@3d10c000/SelectorProducer@486789db/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.303592+09:00,MANAGED}
+DEBUG [2021-07-29 13:55:32,303] (ContainerLifeCycle.java[addBean]:412) - SelectorManager@ServerConnector@1ee804fe{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {ManagedSelector@61f6b075{STOPPED} id=2 keys=-1 selected=-1 updates=0,AUTO}
+DEBUG [2021-07-29 13:55:32,304] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@4593b197/SelectorProducer@7e3879e5/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.304104+09:00 added {SelectorProducer@7e3879e5,POJO}
+DEBUG [2021-07-29 13:55:32,304] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@4593b197/SelectorProducer@7e3879e5/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.304343+09:00 added {QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}],UNMANAGED}
+DEBUG [2021-07-29 13:55:32,304] (EatWhatYouKill.java[<init>]:93) - EatWhatYouKill@4593b197/SelectorProducer@7e3879e5/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.304946+09:00 created
+DEBUG [2021-07-29 13:55:32,305] (ContainerLifeCycle.java[addBean]:412) - ManagedSelector@ae50ea8{STOPPED} id=3 keys=-1 selected=-1 updates=0 added {EatWhatYouKill@4593b197/SelectorProducer@7e3879e5/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.305275+09:00,MANAGED}
+DEBUG [2021-07-29 13:55:32,305] (ContainerLifeCycle.java[addBean]:412) - SelectorManager@ServerConnector@1ee804fe{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {ManagedSelector@ae50ea8{STOPPED} id=3 keys=-1 selected=-1 updates=0,AUTO}
+DEBUG [2021-07-29 13:55:32,305] (AbstractLifeCycle.java[setStarting]:200) - starting ManagedSelector@509c634f{STOPPED} id=0 keys=-1 selected=-1 updates=0
+DEBUG [2021-07-29 13:55:32,305] (AbstractLifeCycle.java[setStarting]:200) - starting EatWhatYouKill@6570ba67/SelectorProducer@70919f5a/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.305843+09:00
+DEBUG [2021-07-29 13:55:32,306] (AbstractLifeCycle.java[setStarted]:190) - STARTED @799ms EatWhatYouKill@6570ba67/SelectorProducer@70919f5a/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.306038+09:00
+DEBUG [2021-07-29 13:55:32,308] (QueuedThreadPool.java[execute]:543) - queue org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab1c0@4cccae0b startThread=0
+DEBUG [2021-07-29 13:55:32,309] (QueuedThreadPool.java[run]:937) - run org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab1c0@4cccae0b in QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=7,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:32,309] (ManagedSelector.java[submit]:252) - Queued change lazy=false org.eclipse.jetty.io.ManagedSelector$Start@5495ced on ManagedSelector@509c634f{STARTING} id=0 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:55:32,309] (EatWhatYouKill.java[tryProduce]:141) - EatWhatYouKill@6570ba67/SelectorProducer@70919f5a/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=7,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.309511+09:00 tryProduce false
+DEBUG [2021-07-29 13:55:32,310] (ManagedSelector.java[processUpdates]:524) - updateable 1
+DEBUG [2021-07-29 13:55:32,310] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ManagedSelector$Start@5495ced
+DEBUG [2021-07-29 13:55:32,310] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:55:32,310] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@650dd89a waiting with 0 keys
+DEBUG [2021-07-29 13:55:32,310] (AbstractLifeCycle.java[setStarted]:190) - STARTED @803ms ManagedSelector@509c634f{STARTED} id=0 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:55:32,310] (AbstractLifeCycle.java[setStarting]:200) - starting ManagedSelector@ea55c80{STOPPED} id=1 keys=-1 selected=-1 updates=0
+DEBUG [2021-07-29 13:55:32,310] (AbstractLifeCycle.java[setStarting]:200) - starting EatWhatYouKill@4ea764b5/SelectorProducer@63f9483a/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=7,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.310787+09:00
+DEBUG [2021-07-29 13:55:32,311] (AbstractLifeCycle.java[setStarted]:190) - STARTED @804ms EatWhatYouKill@4ea764b5/SelectorProducer@63f9483a/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=7,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.31148+09:00
+DEBUG [2021-07-29 13:55:32,311] (QueuedThreadPool.java[execute]:543) - queue org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab1c0@3c6f287d startThread=0
+DEBUG [2021-07-29 13:55:32,311] (ManagedSelector.java[submit]:252) - Queued change lazy=false org.eclipse.jetty.io.ManagedSelector$Start@29ca00f9 on ManagedSelector@ea55c80{STARTING} id=1 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:55:32,311] (QueuedThreadPool.java[run]:937) - run org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab1c0@3c6f287d in QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=6,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:32,312] (EatWhatYouKill.java[tryProduce]:141) - EatWhatYouKill@4ea764b5/SelectorProducer@63f9483a/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=6,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.312205+09:00 tryProduce false
+DEBUG [2021-07-29 13:55:32,312] (ManagedSelector.java[processUpdates]:524) - updateable 1
+DEBUG [2021-07-29 13:55:32,312] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ManagedSelector$Start@29ca00f9
+DEBUG [2021-07-29 13:55:32,312] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:55:32,312] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@43108702 waiting with 0 keys
+DEBUG [2021-07-29 13:55:32,312] (AbstractLifeCycle.java[setStarted]:190) - STARTED @805ms ManagedSelector@ea55c80{STARTED} id=1 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:55:32,312] (AbstractLifeCycle.java[setStarting]:200) - starting ManagedSelector@61f6b075{STOPPED} id=2 keys=-1 selected=-1 updates=0
+DEBUG [2021-07-29 13:55:32,312] (AbstractLifeCycle.java[setStarting]:200) - starting EatWhatYouKill@3d10c000/SelectorProducer@486789db/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=6,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.312824+09:00
+DEBUG [2021-07-29 13:55:32,313] (AbstractLifeCycle.java[setStarted]:190) - STARTED @806ms EatWhatYouKill@3d10c000/SelectorProducer@486789db/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=6,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.313012+09:00
+DEBUG [2021-07-29 13:55:32,313] (QueuedThreadPool.java[execute]:543) - queue org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab1c0@2f87d5f1 startThread=0
+DEBUG [2021-07-29 13:55:32,313] (ManagedSelector.java[submit]:252) - Queued change lazy=false org.eclipse.jetty.io.ManagedSelector$Start@2969bc50 on ManagedSelector@61f6b075{STARTING} id=2 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:55:32,313] (QueuedThreadPool.java[run]:937) - run org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab1c0@2f87d5f1 in QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=5,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:32,313] (EatWhatYouKill.java[tryProduce]:141) - EatWhatYouKill@3d10c000/SelectorProducer@486789db/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=5,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.313647+09:00 tryProduce false
+DEBUG [2021-07-29 13:55:32,313] (ManagedSelector.java[processUpdates]:524) - updateable 1
+DEBUG [2021-07-29 13:55:32,313] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ManagedSelector$Start@2969bc50
+DEBUG [2021-07-29 13:55:32,313] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:55:32,313] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@24e3db25 waiting with 0 keys
+DEBUG [2021-07-29 13:55:32,313] (AbstractLifeCycle.java[setStarted]:190) - STARTED @807ms ManagedSelector@61f6b075{STARTED} id=2 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:55:32,314] (AbstractLifeCycle.java[setStarting]:200) - starting ManagedSelector@ae50ea8{STOPPED} id=3 keys=-1 selected=-1 updates=0
+DEBUG [2021-07-29 13:55:32,314] (AbstractLifeCycle.java[setStarting]:200) - starting EatWhatYouKill@4593b197/SelectorProducer@7e3879e5/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=5,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.314282+09:00
+DEBUG [2021-07-29 13:55:32,314] (AbstractLifeCycle.java[setStarted]:190) - STARTED @807ms EatWhatYouKill@4593b197/SelectorProducer@7e3879e5/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=5,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.314612+09:00
+DEBUG [2021-07-29 13:55:32,314] (QueuedThreadPool.java[execute]:543) - queue org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab1c0@6c8045c0 startThread=0
+DEBUG [2021-07-29 13:55:32,314] (ManagedSelector.java[submit]:252) - Queued change lazy=false org.eclipse.jetty.io.ManagedSelector$Start@15b44d61 on ManagedSelector@ae50ea8{STARTING} id=3 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:55:32,314] (QueuedThreadPool.java[run]:937) - run org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab1c0@6c8045c0 in QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=4,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:32,315] (EatWhatYouKill.java[tryProduce]:141) - EatWhatYouKill@4593b197/SelectorProducer@7e3879e5/IDLE/p=false/QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=4,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:55:32.315303+09:00 tryProduce false
+DEBUG [2021-07-29 13:55:32,315] (ManagedSelector.java[processUpdates]:524) - updateable 1
+DEBUG [2021-07-29 13:55:32,315] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ManagedSelector$Start@15b44d61
+DEBUG [2021-07-29 13:55:32,315] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:55:32,315] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@487dac92 waiting with 0 keys
+DEBUG [2021-07-29 13:55:32,315] (AbstractLifeCycle.java[setStarted]:190) - STARTED @808ms ManagedSelector@ae50ea8{STARTED} id=3 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:55:32,315] (AbstractLifeCycle.java[setStarted]:190) - STARTED @809ms SelectorManager@ServerConnector@1ee804fe{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+DEBUG [2021-07-29 13:55:32,316] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@1ee804fe{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {acceptor-0@394ae1ef,POJO}
+DEBUG [2021-07-29 13:55:32,316] (QueuedThreadPool.java[execute]:543) - queue acceptor-0@394ae1ef startThread=0
+ INFO [2021-07-29 13:55:32,316] (AbstractConnector.java[doStart]:331) - Started ServerConnector@1ee804fe{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+DEBUG [2021-07-29 13:55:32,316] (QueuedThreadPool.java[run]:937) - run acceptor-0@394ae1ef in QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=3,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}]
+DEBUG [2021-07-29 13:55:32,316] (AbstractLifeCycle.java[setStarted]:190) - STARTED @810ms ServerConnector@1ee804fe{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+ INFO [2021-07-29 13:55:32,316] (Server.java[doStart]:400) - Started @810ms
+DEBUG [2021-07-29 13:55:32,317] (AbstractLifeCycle.java[setStarted]:190) - STARTED @810ms Server@170177c4{STARTED}[9.4.31.v20200723]
+ INFO [2021-07-29 13:56:46,632] (SynbagConfig.java[init]:72) - ===========================
+ INFO [2021-07-29 13:56:46,634] (SynbagConfig.java[init]:73) - Config sharding tables 
+ INFO [2021-07-29 13:56:46,636] (SynbagConfig.java[init]:82) - [datanodes] ds${0..1}.user
+ INFO [2021-07-29 13:56:46,636] (SynbagConfig.java[init]:83) - [shardingTable] ShardingTable(realTableName=user, shardingColumn=userid, shardingMethod=crc32, preciseShardingAlgorithm=net.gywn.algorithm.PreciseShardingCRC32@72437d8d)
+ INFO [2021-07-29 13:56:46,637] (SynbagConfig.java[init]:82) - [datanodes] ds${0..1}.user_log
+ INFO [2021-07-29 13:56:46,637] (SynbagConfig.java[init]:83) - [shardingTable] ShardingTable(realTableName=user_log, shardingColumn=userid, shardingMethod=crc32, preciseShardingAlgorithm=net.gywn.algorithm.PreciseShardingCRC32@29a0cdb)
+ INFO [2021-07-29 13:56:46,637] (SynbagConfig.java[init]:98) - ===========================
+ INFO [2021-07-29 13:56:46,637] (SynbagConfig.java[init]:99) - Config broastcast tables 
+ INFO [2021-07-29 13:56:46,637] (SynbagConfig.java[init]:102) - [broadcastTable] config
+ INFO [2021-07-29 13:56:46,999] (ConfigurationLogger.java[log]:104) - ShardingRuleConfiguration:
+bindingTables:
+- user
+- user_log
+broadcastTables:
+- config
+defaultDataSourceName: ds0
+tables:
+  user:
+    actualDataNodes: ds${0..1}.user
+    databaseStrategy:
+      standard:
+        preciseAlgorithmClassName: net.gywn.algorithm.PreciseShardingCRC32
+        shardingColumn: userid
+    logicTable: user
+  user_log:
+    actualDataNodes: ds${0..1}.user_log
+    databaseStrategy:
+      standard:
+        preciseAlgorithmClassName: net.gywn.algorithm.PreciseShardingCRC32
+        shardingColumn: userid
+    logicTable: user_log
+
+ INFO [2021-07-29 13:56:47,011] (ShardingMetaDataLoader.java[loadShardingSchemaMetaData]:131) - Loading 2 logic tables' meta data.
+ INFO [2021-07-29 13:56:47,037] (SchemaMetaDataLoader.java[load]:70) - Loading 3 tables' meta data.
+ INFO [2021-07-29 13:56:47,061] (MultipleDataSourcesRuntimeContext.java[createMetaData]:59) - Meta data load finished, cost 62 milliseconds.
+ INFO [2021-07-29 13:56:47,069] (SynbagConfig.java[init]:115) - shardingDatasource created
+ INFO [2021-07-29 13:56:47,069] (SynbagConfig.java[init]:117) - SynbagConfig(shardingRuleConfig=org.apache.shardingsphere.api.config.sharding.ShardingRuleConfiguration@cbc8d0f, dataSources=[org.apache.commons.dbcp2.BasicDataSource@5c1f6d57, org.apache.commons.dbcp2.BasicDataSource@f288c14], shardingTables={user=ShardingTable(realTableName=user, shardingColumn=userid, shardingMethod=crc32, preciseShardingAlgorithm=net.gywn.algorithm.PreciseShardingCRC32@72437d8d), user_log=ShardingTable(realTableName=user_log, shardingColumn=userid, shardingMethod=crc32, preciseShardingAlgorithm=net.gywn.algorithm.PreciseShardingCRC32@29a0cdb)}, broadcastTables=[config], shardingDatasource=org.apache.shardingsphere.shardingjdbc.jdbc.core.datasource.ShardingDataSource@6794ac0b)
+ INFO [2021-07-29 13:56:47,072] (SynbagServer.java[call]:79) - 0.0.0.0:5280/t/user
+DEBUG [2021-07-29 13:56:47,074] (Routes.java[add]:191) - Adds route: post, /t/user, spark.RouteImpl$1@2caa5d7c
+ INFO [2021-07-29 13:56:47,074] (SynbagServer.java[call]:79) - 0.0.0.0:5280/t/user_log
+DEBUG [2021-07-29 13:56:47,074] (Routes.java[add]:191) - Adds route: post, /t/user_log, spark.RouteImpl$1@5e671e20
+ INFO [2021-07-29 13:56:47,074] (SynbagServer.java[call]:79) - 0.0.0.0:5280/t/config
+DEBUG [2021-07-29 13:56:47,074] (Routes.java[add]:191) - Adds route: post, /t/config, spark.RouteImpl$1@3eabe84a
+ INFO [2021-07-29 13:56:47,074] (SynbagServer.java[call]:91) - 0.0.0.0:5280/q
+DEBUG [2021-07-29 13:56:47,074] (Routes.java[add]:191) - Adds route: post, /q, spark.RouteImpl$1@38fc5554
+DEBUG [2021-07-29 13:56:47,085] (Log.java[initialized]:159) - Logging to org.slf4j.impl.Log4jLoggerAdapter(org.eclipse.jetty.util.log) via org.eclipse.jetty.util.log.Slf4jLog
+ INFO [2021-07-29 13:56:47,086] (Log.java[initialized]:169) - Logging initialized @754ms to org.eclipse.jetty.util.log.Slf4jLog
+DEBUG [2021-07-29 13:56:47,092] (ContainerLifeCycle.java[addBean]:412) - Server@2e535a{STOPPED}[9.4.31.v20200723] added {QueuedThreadPool[qtp983775922]@3aa33ab2{STOPPED,8<=0<=200,i=0,r=-1,q=0}[NO_TRY],AUTO}
+DEBUG [2021-07-29 13:56:47,101] (ContainerLifeCycle.java[addBean]:412) - HttpConnectionFactory@7e5a41f[HTTP/1.1] added {HttpConfiguration@4a3c781{32768/8192,8192/8192,https://:0,[ForwardedRequestCustomizer@4982d143]},POJO}
+DEBUG [2021-07-29 13:56:47,105] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@26719f09{null, ()}{0.0.0.0:0} added {Server@2e535a{STOPPED}[9.4.31.v20200723],UNMANAGED}
+DEBUG [2021-07-29 13:56:47,105] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@26719f09{null, ()}{0.0.0.0:0} added {QueuedThreadPool[qtp983775922]@3aa33ab2{STOPPED,8<=0<=200,i=0,r=-1,q=0}[NO_TRY],AUTO}
+DEBUG [2021-07-29 13:56:47,106] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@26719f09{null, ()}{0.0.0.0:0} added {ScheduledExecutorScheduler@2baaa448{STOPPED},AUTO}
+DEBUG [2021-07-29 13:56:47,106] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@26719f09{null, ()}{0.0.0.0:0} added {org.eclipse.jetty.io.ArrayByteBufferPool@679dd3ba,POJO}
+DEBUG [2021-07-29 13:56:47,106] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@26719f09{null, (http/1.1)}{0.0.0.0:0} added {HttpConnectionFactory@7e5a41f[HTTP/1.1],AUTO}
+DEBUG [2021-07-29 13:56:47,106] (AbstractConnector.java[addConnectionFactory]:484) - ServerConnector@26719f09{HTTP/1.1, (http/1.1)}{0.0.0.0:0} added HttpConnectionFactory@7e5a41f[HTTP/1.1]
+DEBUG [2021-07-29 13:56:47,108] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@26719f09{HTTP/1.1, (http/1.1)}{0.0.0.0:0} added {SelectorManager@ServerConnector@26719f09{HTTP/1.1, (http/1.1)}{0.0.0.0:0},MANAGED}
+DEBUG [2021-07-29 13:56:47,108] (ContainerLifeCycle.java[addBean]:412) - Server@2e535a{STOPPED}[9.4.31.v20200723] added {ServerConnector@26719f09{HTTP/1.1, (http/1.1)}{0.0.0.0:5280},AUTO}
+DEBUG [2021-07-29 13:56:47,109] (ContainerLifeCycle.java[addBean]:412) - Server@2e535a{STOPPED}[9.4.31.v20200723] added {spark.embeddedserver.jetty.JettyHandler897519535==dftMaxIdleSec=-1,MANAGED}
+ INFO [2021-07-29 13:56:47,109] (EmbeddedJettyServer.java[ignite]:142) - == Spark has ignited ...
+ INFO [2021-07-29 13:56:47,109] (EmbeddedJettyServer.java[ignite]:146) - >> Listening on 0.0.0.0:5280
+DEBUG [2021-07-29 13:56:47,109] (AbstractLifeCycle.java[setStarting]:200) - starting Server@2e535a{STOPPED}[9.4.31.v20200723]
+DEBUG [2021-07-29 13:56:47,110] (ContainerLifeCycle.java[addBean]:412) - Server@2e535a{STARTING}[9.4.31.v20200723] added {ErrorHandler@48f50369{STOPPED},AUTO}
+ INFO [2021-07-29 13:56:47,110] (Server.java[doStart]:360) - jetty-9.4.31.v20200723; built: 2020-07-23T17:57:36.812Z; git: 450ba27947e13e66baa8cd1ce7e85a4461cacc1d; jvm 16.0.1+9
+DEBUG [2021-07-29 13:56:47,114] (AbstractHandler.java[doStart]:94) - starting Server@2e535a{STARTING}[9.4.31.v20200723]
+DEBUG [2021-07-29 13:56:47,114] (AbstractLifeCycle.java[setStarting]:200) - starting QueuedThreadPool[qtp983775922]@3aa33ab2{STOPPED,8<=0<=200,i=0,r=-1,q=0}[NO_TRY]
+DEBUG [2021-07-29 13:56:47,115] (ReservedThreadExecutor.java[<init>]:85) - ReservedThreadExecutor@172d27e7{s=0/8,p=0}
+DEBUG [2021-07-29 13:56:47,115] (ContainerLifeCycle.java[addBean]:412) - QueuedThreadPool[qtp983775922]@3aa33ab2{STARTING,8<=0<=200,i=0,r=-1,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}] added {ReservedThreadExecutor@172d27e7{s=0/8,p=0},AUTO}
+DEBUG [2021-07-29 13:56:47,115] (AbstractLifeCycle.java[setStarting]:200) - starting ReservedThreadExecutor@172d27e7{s=0/8,p=0}
+DEBUG [2021-07-29 13:56:47,116] (AbstractLifeCycle.java[setStarted]:190) - STARTED @784ms ReservedThreadExecutor@172d27e7{s=0/8,p=0}
+DEBUG [2021-07-29 13:56:47,116] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp983775922-19,5,main]
+DEBUG [2021-07-29 13:56:47,116] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp983775922-20,5,main]
+DEBUG [2021-07-29 13:56:47,116] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp983775922-21,5,main]
+DEBUG [2021-07-29 13:56:47,116] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp983775922-22,5,main]
+DEBUG [2021-07-29 13:56:47,117] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp983775922-23,5,main]
+DEBUG [2021-07-29 13:56:47,117] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp983775922]@3aa33ab2{STARTING,8<=2<=200,i=2,r=-1,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}]
+DEBUG [2021-07-29 13:56:47,117] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp983775922-24,5,main]
+DEBUG [2021-07-29 13:56:47,117] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp983775922]@3aa33ab2{STARTING,8<=3<=200,i=3,r=-1,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}]
+DEBUG [2021-07-29 13:56:47,117] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp983775922-25,5,main]
+DEBUG [2021-07-29 13:56:47,117] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp983775922]@3aa33ab2{STARTING,8<=4<=200,i=4,r=-1,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}]
+DEBUG [2021-07-29 13:56:47,117] (QueuedThreadPool.java[startThread]:657) - Starting Thread[qtp983775922-26,5,main]
+DEBUG [2021-07-29 13:56:47,117] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp983775922]@3aa33ab2{STARTING,8<=4<=200,i=4,r=-1,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}]
+DEBUG [2021-07-29 13:56:47,117] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp983775922]@3aa33ab2{STARTING,8<=6<=200,i=6,r=-1,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}]
+DEBUG [2021-07-29 13:56:47,118] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp983775922]@3aa33ab2{STARTING,8<=7<=200,i=7,r=-1,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}]
+DEBUG [2021-07-29 13:56:47,118] (AbstractLifeCycle.java[setStarted]:190) - STARTED @785ms QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}]
+DEBUG [2021-07-29 13:56:47,118] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}]
+DEBUG [2021-07-29 13:56:47,118] (QueuedThreadPool.java[run]:882) - Runner started for QueuedThreadPool[qtp983775922]@3aa33ab2{STARTING,8<=8<=200,i=8,r=-1,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}]
+DEBUG [2021-07-29 13:56:47,118] (AbstractLifeCycle.java[setStarting]:200) - starting spark.embeddedserver.jetty.JettyHandler897519535==dftMaxIdleSec=-1
+DEBUG [2021-07-29 13:56:47,120] (ContainerLifeCycle.java[addBean]:412) - spark.embeddedserver.jetty.JettyHandler897519535==dftMaxIdleSec=-1 added {org.eclipse.jetty.server.session.DefaultSessionCache@63357363[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false],AUTO}
+DEBUG [2021-07-29 13:56:47,120] (ContainerLifeCycle.java[addBean]:412) - org.eclipse.jetty.server.session.DefaultSessionCache@63357363[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false] added {org.eclipse.jetty.server.session.NullSessionDataStore@53ecc7f6[passivating=false,graceSec=3600],AUTO}
+DEBUG [2021-07-29 13:56:47,121] (AbstractLifeCycle.java[setStarting]:200) - starting DefaultSessionIdManager@5634d7b9{STOPPED}[worker=null]
+ INFO [2021-07-29 13:56:47,121] (DefaultSessionIdManager.java[doStart]:334) - DefaultSessionIdManager workerName=node0
+ INFO [2021-07-29 13:56:47,121] (DefaultSessionIdManager.java[doStart]:339) - No SessionScavenger set, using defaults
+DEBUG [2021-07-29 13:56:47,121] (ContainerLifeCycle.java[addBean]:412) - DefaultSessionIdManager@5634d7b9{STARTING}[worker=node0] added {HouseKeeper@685b0331{STOPPED}[interval=600000, ownscheduler=false],MANAGED}
+DEBUG [2021-07-29 13:56:47,121] (AbstractLifeCycle.java[setStarting]:200) - starting HouseKeeper@685b0331{STOPPED}[interval=600000, ownscheduler=false]
+DEBUG [2021-07-29 13:56:47,122] (AbstractLifeCycle.java[setStarting]:200) - starting ScheduledExecutorScheduler@2336d7c6{STOPPED}
+DEBUG [2021-07-29 13:56:47,122] (AbstractLifeCycle.java[setStarted]:190) - STARTED @790ms ScheduledExecutorScheduler@2336d7c6{STARTED}
+DEBUG [2021-07-29 13:56:47,122] (HouseKeeper.java[findScheduler]:117) - Using own scheduler for scavenging
+ INFO [2021-07-29 13:56:47,122] (HouseKeeper.java[startScavenging]:140) - node0 Scavenging every 600000ms
+DEBUG [2021-07-29 13:56:47,123] (AbstractLifeCycle.java[setStarted]:190) - STARTED @791ms HouseKeeper@685b0331{STARTED}[interval=600000, ownscheduler=true]
+DEBUG [2021-07-29 13:56:47,123] (AbstractLifeCycle.java[setStarted]:190) - STARTED @791ms DefaultSessionIdManager@5634d7b9{STARTED}[worker=node0]
+DEBUG [2021-07-29 13:56:47,123] (ContainerLifeCycle.java[addBean]:412) - Server@2e535a{STARTING}[9.4.31.v20200723] added {DefaultSessionIdManager@5634d7b9{STARTED}[worker=node0],MANAGED}
+DEBUG [2021-07-29 13:56:47,123] (ContainerLifeCycle.java[addBean]:412) - spark.embeddedserver.jetty.JettyHandler897519535==dftMaxIdleSec=-1 added {DefaultSessionIdManager@5634d7b9{STARTED}[worker=node0],UNMANAGED}
+DEBUG [2021-07-29 13:56:47,123] (AbstractLifeCycle.java[setStarting]:200) - starting ScheduledExecutorScheduler@1b687c54{STOPPED}
+DEBUG [2021-07-29 13:56:47,123] (AbstractLifeCycle.java[setStarted]:190) - STARTED @791ms ScheduledExecutorScheduler@1b687c54{STARTED}
+DEBUG [2021-07-29 13:56:47,123] (AbstractHandler.java[doStart]:94) - starting spark.embeddedserver.jetty.JettyHandler897519535==dftMaxIdleSec=-1
+DEBUG [2021-07-29 13:56:47,124] (AbstractLifeCycle.java[setStarting]:200) - starting org.eclipse.jetty.server.session.DefaultSessionCache@63357363[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false]
+DEBUG [2021-07-29 13:56:47,124] (AbstractLifeCycle.java[setStarting]:200) - starting org.eclipse.jetty.server.session.NullSessionDataStore@53ecc7f6[passivating=false,graceSec=3600]
+DEBUG [2021-07-29 13:56:47,124] (AbstractLifeCycle.java[setStarted]:190) - STARTED @792ms org.eclipse.jetty.server.session.NullSessionDataStore@53ecc7f6[passivating=false,graceSec=3600]
+DEBUG [2021-07-29 13:56:47,124] (AbstractLifeCycle.java[setStarted]:190) - STARTED @792ms org.eclipse.jetty.server.session.DefaultSessionCache@63357363[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false]
+DEBUG [2021-07-29 13:56:47,124] (AbstractLifeCycle.java[setStarted]:190) - STARTED @792ms spark.embeddedserver.jetty.JettyHandler897519535==dftMaxIdleSec=-1
+DEBUG [2021-07-29 13:56:47,124] (AbstractLifeCycle.java[setStarting]:200) - starting ErrorHandler@48f50369{STOPPED}
+DEBUG [2021-07-29 13:56:47,124] (AbstractHandler.java[doStart]:94) - starting ErrorHandler@48f50369{STARTING}
+DEBUG [2021-07-29 13:56:47,124] (AbstractLifeCycle.java[setStarted]:190) - STARTED @792ms ErrorHandler@48f50369{STARTED}
+DEBUG [2021-07-29 13:56:47,124] (AbstractLifeCycle.java[setStarting]:200) - starting ServerConnector@26719f09{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+DEBUG [2021-07-29 13:56:47,127] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@26719f09{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {sun.nio.ch.ServerSocketChannelImpl[/[0:0:0:0:0:0:0:0]:5280],POJO}
+DEBUG [2021-07-29 13:56:47,127] (AbstractLifeCycle.java[setStarting]:200) - starting ScheduledExecutorScheduler@2baaa448{STOPPED}
+DEBUG [2021-07-29 13:56:47,128] (AbstractLifeCycle.java[setStarted]:190) - STARTED @796ms ScheduledExecutorScheduler@2baaa448{STARTED}
+DEBUG [2021-07-29 13:56:47,128] (AbstractLifeCycle.java[setStarting]:200) - starting HttpConnectionFactory@7e5a41f[HTTP/1.1]
+DEBUG [2021-07-29 13:56:47,128] (AbstractLifeCycle.java[setStarted]:190) - STARTED @796ms HttpConnectionFactory@7e5a41f[HTTP/1.1]
+DEBUG [2021-07-29 13:56:47,128] (AbstractLifeCycle.java[setStarting]:200) - starting SelectorManager@ServerConnector@26719f09{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+DEBUG [2021-07-29 13:56:47,132] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@3f8eff1e/SelectorProducer@67bca80c/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.131369+09:00 added {SelectorProducer@67bca80c,POJO}
+DEBUG [2021-07-29 13:56:47,132] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@3f8eff1e/SelectorProducer@67bca80c/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.132682+09:00 added {QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}],UNMANAGED}
+DEBUG [2021-07-29 13:56:47,133] (EatWhatYouKill.java[<init>]:93) - EatWhatYouKill@3f8eff1e/SelectorProducer@67bca80c/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.133207+09:00 created
+DEBUG [2021-07-29 13:56:47,133] (ContainerLifeCycle.java[addBean]:412) - ManagedSelector@70174d66{STOPPED} id=0 keys=-1 selected=-1 updates=0 added {EatWhatYouKill@3f8eff1e/SelectorProducer@67bca80c/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.133722+09:00,MANAGED}
+DEBUG [2021-07-29 13:56:47,134] (ContainerLifeCycle.java[addBean]:412) - SelectorManager@ServerConnector@26719f09{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {ManagedSelector@70174d66{STOPPED} id=0 keys=-1 selected=-1 updates=0,AUTO}
+DEBUG [2021-07-29 13:56:47,134] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@4d4232e1/SelectorProducer@7998801/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.134246+09:00 added {SelectorProducer@7998801,POJO}
+DEBUG [2021-07-29 13:56:47,134] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@4d4232e1/SelectorProducer@7998801/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.134494+09:00 added {QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}],UNMANAGED}
+DEBUG [2021-07-29 13:56:47,134] (EatWhatYouKill.java[<init>]:93) - EatWhatYouKill@4d4232e1/SelectorProducer@7998801/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.134899+09:00 created
+DEBUG [2021-07-29 13:56:47,135] (ContainerLifeCycle.java[addBean]:412) - ManagedSelector@2c1fac7f{STOPPED} id=1 keys=-1 selected=-1 updates=0 added {EatWhatYouKill@4d4232e1/SelectorProducer@7998801/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.135276+09:00,MANAGED}
+DEBUG [2021-07-29 13:56:47,135] (ContainerLifeCycle.java[addBean]:412) - SelectorManager@ServerConnector@26719f09{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {ManagedSelector@2c1fac7f{STOPPED} id=1 keys=-1 selected=-1 updates=0,AUTO}
+DEBUG [2021-07-29 13:56:47,135] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@66a9a8e7/SelectorProducer@3a205be9/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.135739+09:00 added {SelectorProducer@3a205be9,POJO}
+DEBUG [2021-07-29 13:56:47,136] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@66a9a8e7/SelectorProducer@3a205be9/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.13597+09:00 added {QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}],UNMANAGED}
+DEBUG [2021-07-29 13:56:47,136] (EatWhatYouKill.java[<init>]:93) - EatWhatYouKill@66a9a8e7/SelectorProducer@3a205be9/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.136411+09:00 created
+DEBUG [2021-07-29 13:56:47,136] (ContainerLifeCycle.java[addBean]:412) - ManagedSelector@7132152c{STOPPED} id=2 keys=-1 selected=-1 updates=0 added {EatWhatYouKill@66a9a8e7/SelectorProducer@3a205be9/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.136895+09:00,MANAGED}
+DEBUG [2021-07-29 13:56:47,137] (ContainerLifeCycle.java[addBean]:412) - SelectorManager@ServerConnector@26719f09{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {ManagedSelector@7132152c{STOPPED} id=2 keys=-1 selected=-1 updates=0,AUTO}
+DEBUG [2021-07-29 13:56:47,137] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@209f3321/SelectorProducer@bda5945/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.137462+09:00 added {SelectorProducer@bda5945,POJO}
+DEBUG [2021-07-29 13:56:47,137] (ContainerLifeCycle.java[addBean]:412) - EatWhatYouKill@209f3321/SelectorProducer@bda5945/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.137697+09:00 added {QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}],UNMANAGED}
+DEBUG [2021-07-29 13:56:47,138] (EatWhatYouKill.java[<init>]:93) - EatWhatYouKill@209f3321/SelectorProducer@bda5945/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.138041+09:00 created
+DEBUG [2021-07-29 13:56:47,138] (ContainerLifeCycle.java[addBean]:412) - ManagedSelector@339db4c4{STOPPED} id=3 keys=-1 selected=-1 updates=0 added {EatWhatYouKill@209f3321/SelectorProducer@bda5945/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.138315+09:00,MANAGED}
+DEBUG [2021-07-29 13:56:47,138] (ContainerLifeCycle.java[addBean]:412) - SelectorManager@ServerConnector@26719f09{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {ManagedSelector@339db4c4{STOPPED} id=3 keys=-1 selected=-1 updates=0,AUTO}
+DEBUG [2021-07-29 13:56:47,138] (AbstractLifeCycle.java[setStarting]:200) - starting ManagedSelector@70174d66{STOPPED} id=0 keys=-1 selected=-1 updates=0
+DEBUG [2021-07-29 13:56:47,138] (AbstractLifeCycle.java[setStarting]:200) - starting EatWhatYouKill@3f8eff1e/SelectorProducer@67bca80c/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.138816+09:00
+DEBUG [2021-07-29 13:56:47,139] (AbstractLifeCycle.java[setStarted]:190) - STARTED @807ms EatWhatYouKill@3f8eff1e/SelectorProducer@67bca80c/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=8,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.139102+09:00
+DEBUG [2021-07-29 13:56:47,141] (QueuedThreadPool.java[execute]:543) - queue org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab1c0@26425ada startThread=0
+DEBUG [2021-07-29 13:56:47,141] (QueuedThreadPool.java[run]:937) - run org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab1c0@26425ada in QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=7,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}]
+DEBUG [2021-07-29 13:56:47,141] (ManagedSelector.java[submit]:252) - Queued change lazy=false org.eclipse.jetty.io.ManagedSelector$Start@8a79ad6 on ManagedSelector@70174d66{STARTING} id=0 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:56:47,141] (EatWhatYouKill.java[tryProduce]:141) - EatWhatYouKill@3f8eff1e/SelectorProducer@67bca80c/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=7,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.141902+09:00 tryProduce false
+DEBUG [2021-07-29 13:56:47,142] (ManagedSelector.java[processUpdates]:524) - updateable 1
+DEBUG [2021-07-29 13:56:47,142] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ManagedSelector$Start@8a79ad6
+DEBUG [2021-07-29 13:56:47,142] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:56:47,142] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@20d8dedf waiting with 0 keys
+DEBUG [2021-07-29 13:56:47,142] (AbstractLifeCycle.java[setStarted]:190) - STARTED @810ms ManagedSelector@70174d66{STARTED} id=0 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:56:47,142] (AbstractLifeCycle.java[setStarting]:200) - starting ManagedSelector@2c1fac7f{STOPPED} id=1 keys=-1 selected=-1 updates=0
+DEBUG [2021-07-29 13:56:47,142] (AbstractLifeCycle.java[setStarting]:200) - starting EatWhatYouKill@4d4232e1/SelectorProducer@7998801/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=7,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.142872+09:00
+DEBUG [2021-07-29 13:56:47,143] (AbstractLifeCycle.java[setStarted]:190) - STARTED @811ms EatWhatYouKill@4d4232e1/SelectorProducer@7998801/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=7,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.143369+09:00
+DEBUG [2021-07-29 13:56:47,143] (QueuedThreadPool.java[execute]:543) - queue org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab1c0@3304e7ce startThread=0
+DEBUG [2021-07-29 13:56:47,143] (ManagedSelector.java[submit]:252) - Queued change lazy=false org.eclipse.jetty.io.ManagedSelector$Start@27d10234 on ManagedSelector@2c1fac7f{STARTING} id=1 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:56:47,144] (QueuedThreadPool.java[run]:937) - run org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab1c0@3304e7ce in QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=6,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}]
+DEBUG [2021-07-29 13:56:47,144] (EatWhatYouKill.java[tryProduce]:141) - EatWhatYouKill@4d4232e1/SelectorProducer@7998801/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=6,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.144205+09:00 tryProduce false
+DEBUG [2021-07-29 13:56:47,144] (ManagedSelector.java[processUpdates]:524) - updateable 1
+DEBUG [2021-07-29 13:56:47,144] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ManagedSelector$Start@27d10234
+DEBUG [2021-07-29 13:56:47,144] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:56:47,144] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@8d566c1 waiting with 0 keys
+DEBUG [2021-07-29 13:56:47,144] (AbstractLifeCycle.java[setStarted]:190) - STARTED @812ms ManagedSelector@2c1fac7f{STARTED} id=1 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:56:47,144] (AbstractLifeCycle.java[setStarting]:200) - starting ManagedSelector@7132152c{STOPPED} id=2 keys=-1 selected=-1 updates=0
+DEBUG [2021-07-29 13:56:47,144] (AbstractLifeCycle.java[setStarting]:200) - starting EatWhatYouKill@66a9a8e7/SelectorProducer@3a205be9/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=6,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.144811+09:00
+DEBUG [2021-07-29 13:56:47,145] (AbstractLifeCycle.java[setStarted]:190) - STARTED @813ms EatWhatYouKill@66a9a8e7/SelectorProducer@3a205be9/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=6,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.145003+09:00
+DEBUG [2021-07-29 13:56:47,145] (QueuedThreadPool.java[execute]:543) - queue org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab1c0@769a53a6 startThread=0
+DEBUG [2021-07-29 13:56:47,145] (ManagedSelector.java[submit]:252) - Queued change lazy=false org.eclipse.jetty.io.ManagedSelector$Start@7c3796c3 on ManagedSelector@7132152c{STARTING} id=2 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:56:47,145] (QueuedThreadPool.java[run]:937) - run org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab1c0@769a53a6 in QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=5,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}]
+DEBUG [2021-07-29 13:56:47,145] (EatWhatYouKill.java[tryProduce]:141) - EatWhatYouKill@66a9a8e7/SelectorProducer@3a205be9/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=5,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.145545+09:00 tryProduce false
+DEBUG [2021-07-29 13:56:47,145] (ManagedSelector.java[processUpdates]:524) - updateable 1
+DEBUG [2021-07-29 13:56:47,145] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ManagedSelector$Start@7c3796c3
+DEBUG [2021-07-29 13:56:47,145] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:56:47,145] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@43108702 waiting with 0 keys
+DEBUG [2021-07-29 13:56:47,145] (AbstractLifeCycle.java[setStarted]:190) - STARTED @813ms ManagedSelector@7132152c{STARTED} id=2 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:56:47,145] (AbstractLifeCycle.java[setStarting]:200) - starting ManagedSelector@339db4c4{STOPPED} id=3 keys=-1 selected=-1 updates=0
+DEBUG [2021-07-29 13:56:47,146] (AbstractLifeCycle.java[setStarting]:200) - starting EatWhatYouKill@209f3321/SelectorProducer@bda5945/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=5,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.146121+09:00
+DEBUG [2021-07-29 13:56:47,146] (AbstractLifeCycle.java[setStarted]:190) - STARTED @814ms EatWhatYouKill@209f3321/SelectorProducer@bda5945/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=5,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.14656+09:00
+DEBUG [2021-07-29 13:56:47,146] (QueuedThreadPool.java[execute]:543) - queue org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab1c0@6819341c startThread=0
+DEBUG [2021-07-29 13:56:47,147] (QueuedThreadPool.java[run]:937) - run org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003ab1c0@6819341c in QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=4,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}]
+DEBUG [2021-07-29 13:56:47,147] (ManagedSelector.java[submit]:252) - Queued change lazy=false org.eclipse.jetty.io.ManagedSelector$Start@47765b89 on ManagedSelector@339db4c4{STARTING} id=3 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:56:47,147] (EatWhatYouKill.java[tryProduce]:141) - EatWhatYouKill@209f3321/SelectorProducer@bda5945/IDLE/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=4,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:56:47.147326+09:00 tryProduce false
+DEBUG [2021-07-29 13:56:47,147] (ManagedSelector.java[processUpdates]:524) - updateable 1
+DEBUG [2021-07-29 13:56:47,147] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ManagedSelector$Start@47765b89
+DEBUG [2021-07-29 13:56:47,147] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:56:47,147] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@6741996c waiting with 0 keys
+DEBUG [2021-07-29 13:56:47,147] (AbstractLifeCycle.java[setStarted]:190) - STARTED @815ms ManagedSelector@339db4c4{STARTED} id=3 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:56:47,147] (AbstractLifeCycle.java[setStarted]:190) - STARTED @815ms SelectorManager@ServerConnector@26719f09{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+DEBUG [2021-07-29 13:56:47,148] (ContainerLifeCycle.java[addBean]:412) - ServerConnector@26719f09{HTTP/1.1, (http/1.1)}{0.0.0.0:5280} added {acceptor-0@7753e4e4,POJO}
+DEBUG [2021-07-29 13:56:47,148] (QueuedThreadPool.java[execute]:543) - queue acceptor-0@7753e4e4 startThread=0
+DEBUG [2021-07-29 13:56:47,148] (QueuedThreadPool.java[run]:937) - run acceptor-0@7753e4e4 in QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=3,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}]
+ INFO [2021-07-29 13:56:47,148] (AbstractConnector.java[doStart]:331) - Started ServerConnector@26719f09{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+DEBUG [2021-07-29 13:56:47,148] (AbstractLifeCycle.java[setStarted]:190) - STARTED @817ms ServerConnector@26719f09{HTTP/1.1, (http/1.1)}{0.0.0.0:5280}
+ INFO [2021-07-29 13:56:47,149] (Server.java[doStart]:400) - Started @817ms
+DEBUG [2021-07-29 13:56:47,149] (AbstractLifeCycle.java[setStarted]:190) - STARTED @817ms Server@2e535a{STARTED}[9.4.31.v20200723]
+DEBUG [2021-07-29 13:57:35,677] (ManagedSelector.java[submit]:252) - Queued change lazy=false Accept@427130e1[java.nio.channels.SocketChannel[connected local=/127.0.0.1:5280 remote=/127.0.0.1:51119]] on ManagedSelector@2c1fac7f{STARTED} id=1 keys=0 selected=0 updates=0
+DEBUG [2021-07-29 13:57:35,678] (ManagedSelector.java[submit]:270) - Wakeup on submit ManagedSelector@2c1fac7f{STARTED} id=1 keys=0 selected=0 updates=1
+DEBUG [2021-07-29 13:57:35,679] (ManagedSelector.java[select]:160) - Selector sun.nio.ch.KQueueSelectorImpl@8d566c1 woken with none selected
+DEBUG [2021-07-29 13:57:35,679] (ManagedSelector.java[select]:578) - Selector sun.nio.ch.KQueueSelectorImpl@8d566c1 woken up from select, 0/0/0 selected
+DEBUG [2021-07-29 13:57:35,679] (ManagedSelector.java[select]:591) - Selector sun.nio.ch.KQueueSelectorImpl@8d566c1 processing 0 keys, 1 updates
+DEBUG [2021-07-29 13:57:35,679] (ManagedSelector.java[processUpdates]:524) - updateable 1
+DEBUG [2021-07-29 13:57:35,679] (ManagedSelector.java[processUpdates]:533) - update Accept@427130e1[java.nio.channels.SocketChannel[connected local=/127.0.0.1:5280 remote=/127.0.0.1:51119]]
+DEBUG [2021-07-29 13:57:35,681] (QueuedThreadPool.java[execute]:543) - queue Accept@427130e1[java.nio.channels.SocketChannel[connected local=/127.0.0.1:5280 remote=/127.0.0.1:51119]] startThread=0
+DEBUG [2021-07-29 13:57:35,681] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:57:35,681] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@8d566c1 waiting with 1 keys
+DEBUG [2021-07-29 13:57:35,682] (QueuedThreadPool.java[run]:937) - run Accept@427130e1[java.nio.channels.SocketChannel[connected local=/127.0.0.1:5280 remote=/127.0.0.1:51119]] in QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=2,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}]
+DEBUG [2021-07-29 13:57:35,688] (IdleTimeout.java[checkIdleTimeout]:161) - SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=-,flush=-,to=3/3600000}{io=0/0,kio=0,kro=0}-><null> idle timeout check, elapsed: 3 ms, remaining: 3599997 ms
+DEBUG [2021-07-29 13:57:35,694] (PreEncodedHttpField.java[<clinit>]:61) - HttpField encoders loaded: [org.eclipse.jetty.http.Http1FieldPreEncoder@2323a394]
+DEBUG [2021-07-29 13:57:35,710] (HttpChannel.java[<init>]:116) - new HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0} -> SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=-,flush=-,to=25/3600000}{io=0/0,kio=0,kro=0}-><null>,null,HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0}
+DEBUG [2021-07-29 13:57:35,712] (HttpConnection.java[<init>]:114) - New HTTP Connection HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=-,flush=-,to=27/3600000}{io=0/0,kio=0,kro=0}-><null>
+DEBUG [2021-07-29 13:57:35,713] (ManagedSelector.java[submit]:252) - Queued change lazy=true org.eclipse.jetty.io.ManagedSelector$$Lambda$184/0x00000003003befe0@64dc4247 on ManagedSelector@2c1fac7f{STARTED} id=1 keys=1 selected=0 updates=0
+DEBUG [2021-07-29 13:57:35,714] (AbstractEndPoint.java[onOpen]:345) - onOpen SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=-,flush=-,to=29/3600000}{io=0/0,kio=0,kro=0}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}
+DEBUG [2021-07-29 13:57:35,715] (AbstractConnection.java[onOpen]:201) - onOpen HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=-,flush=-,to=29/3600000}{io=0/0,kio=0,kro=0}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}
+DEBUG [2021-07-29 13:57:35,716] (AbstractConnection.java[fillInterested]:133) - fillInterested HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=-,flush=-,to=30/3600000}{io=0/0,kio=0,kro=0}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}
+DEBUG [2021-07-29 13:57:35,717] (FillInterest.java[tryRegister]:79) - interested FillInterest@52f86b38{AC.ReadCB@3f42bc1b{HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=FI,flush=-,to=0/3600000}{io=0/0,kio=0,kro=0}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}}}
+DEBUG [2021-07-29 13:57:35,717] (ChannelEndPoint.java[changeInterests]:422) - changeInterests p=false 0->1 for SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=FI,flush=-,to=1/3600000}{io=0/1,kio=0,kro=0}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}
+DEBUG [2021-07-29 13:57:35,718] (ManagedSelector.java[submit]:252) - Queued change lazy=false org.eclipse.jetty.io.ChannelEndPoint$$Lambda$181/0x00000003003ada60@38a94718 on ManagedSelector@2c1fac7f{STARTED} id=1 keys=1 selected=0 updates=1
+DEBUG [2021-07-29 13:57:35,718] (ManagedSelector.java[submit]:270) - Wakeup on submit ManagedSelector@2c1fac7f{STARTED} id=1 keys=1 selected=0 updates=2
+DEBUG [2021-07-29 13:57:35,718] (ManagedSelector.java[select]:160) - Selector sun.nio.ch.KQueueSelectorImpl@8d566c1 woken with none selected
+DEBUG [2021-07-29 13:57:35,718] (ManagedSelector.java[select]:578) - Selector sun.nio.ch.KQueueSelectorImpl@8d566c1 woken up from select, 0/0/1 selected
+DEBUG [2021-07-29 13:57:35,718] (ManagedSelector.java[select]:591) - Selector sun.nio.ch.KQueueSelectorImpl@8d566c1 processing 0 keys, 2 updates
+DEBUG [2021-07-29 13:57:35,718] (ManagedSelector.java[processUpdates]:524) - updateable 2
+DEBUG [2021-07-29 13:57:35,718] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ManagedSelector$$Lambda$184/0x00000003003befe0@64dc4247
+DEBUG [2021-07-29 13:57:35,719] (ManagedSelector.java[processUpdates]:533) - update org.eclipse.jetty.io.ChannelEndPoint$$Lambda$181/0x00000003003ada60@38a94718
+DEBUG [2021-07-29 13:57:35,719] (ManagedSelector.java[createEndPoint]:370) - Created SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=FI,flush=-,to=2/3600000}{io=0/1,kio=0,kro=0}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}
+DEBUG [2021-07-29 13:57:35,720] (QueuedThreadPool.java[run]:940) - ran Accept@427130e1[java.nio.channels.SocketChannel[connected local=/127.0.0.1:5280 remote=/127.0.0.1:51119]] in QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=2,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}]
+DEBUG [2021-07-29 13:57:35,720] (ChannelEndPoint.java[updateKey]:383) - Key interests updated 0 -> 1 on SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=FI,flush=-,to=3/3600000}{io=1/1,kio=1,kro=0}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}
+DEBUG [2021-07-29 13:57:35,720] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:57:35,720] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@8d566c1 waiting with 1 keys
+DEBUG [2021-07-29 13:57:35,720] (ManagedSelector.java[select]:578) - Selector sun.nio.ch.KQueueSelectorImpl@8d566c1 woken up from select, 1/1/1 selected
+DEBUG [2021-07-29 13:57:35,720] (ManagedSelector.java[select]:591) - Selector sun.nio.ch.KQueueSelectorImpl@8d566c1 processing 1 keys, 0 updates
+DEBUG [2021-07-29 13:57:35,721] (ManagedSelector.java[processSelected]:627) - selected 1 channel=java.nio.channels.SocketChannel[connected local=/127.0.0.1:5280 remote=/127.0.0.1:51119], selector=sun.nio.ch.KQueueSelectorImpl@8d566c1, interestOps=1, readyOps=1 SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=FI,flush=-,to=4/3600000}{io=1/1,kio=1,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0} 
+DEBUG [2021-07-29 13:57:35,721] (ChannelEndPoint.java[onSelected]:339) - onSelected 1->0 r=true w=false for SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=FI,flush=-,to=5/3600000}{io=1/0,kio=1,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}
+DEBUG [2021-07-29 13:57:35,722] (ChannelEndPoint.java[onSelected]:351) - task CEP:SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=FI,flush=-,to=5/3600000}{io=1/0,kio=1,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}:runFillable:BLOCKING
+DEBUG [2021-07-29 13:57:35,722] (ReservedThreadExecutor.java[tryExecute]:206) - ReservedThreadExecutor@172d27e7{s=0/8,p=0} tryExecute EatWhatYouKill@4d4232e1/SelectorProducer@7998801/PRODUCING/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=3,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=0}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:57:35.722802+09:00
+DEBUG [2021-07-29 13:57:35,723] (ReservedThreadExecutor.java[startReservedThread]:243) - ReservedThreadExecutor@172d27e7{s=0/8,p=1} startReservedThread p=1
+DEBUG [2021-07-29 13:57:35,723] (QueuedThreadPool.java[execute]:543) - queue ReservedThreadExecutor@172d27e7{s=0/8,p=1}@38c6b84d startThread=0
+DEBUG [2021-07-29 13:57:35,723] (QueuedThreadPool.java[run]:937) - run ReservedThreadExecutor@172d27e7{s=0/8,p=1}@38c6b84d in QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=2,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=0/8,p=1}]
+DEBUG [2021-07-29 13:57:35,724] (ReservedThreadExecutor.java[run]:355) - ReservedThreadExecutor@172d27e7{s=1/8,p=1}@38c6b84d started
+DEBUG [2021-07-29 13:57:35,724] (ReservedThreadExecutor.java[reservedWait]:298) - ReservedThreadExecutor@172d27e7{s=1/8,p=0}@38c6b84d waiting
+DEBUG [2021-07-29 13:57:35,724] (EatWhatYouKill.java[doProduce]:291) - EatWhatYouKill@4d4232e1/SelectorProducer@7998801/PRODUCING/p=false/QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=2,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=1/8,p=1}][pc=0,pic=0,pec=0,epc=0]@2021-07-29T13:57:35.72419+09:00 m=PRODUCE_EXECUTE_CONSUME t=CEP:SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=FI,flush=-,to=8/3600000}{io=1/0,kio=1,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}:runFillable:BLOCKING/BLOCKING
+DEBUG [2021-07-29 13:57:35,726] (QueuedThreadPool.java[execute]:543) - queue CEP:SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=FI,flush=-,to=8/3600000}{io=1/0,kio=1,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}:runFillable:BLOCKING startThread=0
+DEBUG [2021-07-29 13:57:35,726] (QueuedThreadPool.java[run]:937) - run CEP:SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=FI,flush=-,to=9/3600000}{io=1/0,kio=1,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}:runFillable:BLOCKING in QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=1,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=1/8,p=0}]
+DEBUG [2021-07-29 13:57:35,726] (ManagedSelector.java[processUpdates]:524) - updateable 0
+DEBUG [2021-07-29 13:57:35,726] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:57:35,727] (ChannelEndPoint.java[updateKey]:383) - Key interests updated 1 -> 0 on SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=FI,flush=-,to=10/3600000}{io=0/0,kio=0,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}
+DEBUG [2021-07-29 13:57:35,727] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@8d566c1 waiting with 1 keys
+DEBUG [2021-07-29 13:57:35,727] (FillInterest.java[fillable]:101) - fillable FillInterest@52f86b38{AC.ReadCB@3f42bc1b{HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=FI,flush=-,to=10/3600000}{io=0/0,kio=0,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0}}}
+DEBUG [2021-07-29 13:57:35,728] (HttpConnection.java[onFillable]:246) - HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=-,flush=-,to=11/3600000}{io=0/0,kio=0,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0} onFillable enter HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0} null
+DEBUG [2021-07-29 13:57:35,730] (ChannelEndPoint.java[fill]:263) - filled 231 HeapByteBuffer@6b947e04[p=0,l=231,c=8192,r=231]={<<<POST /t/user HTTP/1.1\r\nHo...ke \\"%abcde-name8%\\""}}>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+DEBUG [2021-07-29 13:57:35,730] (HttpConnection.java[fillRequestBuffer]:345) - HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=-,flush=-,to=1/3600000}{io=0/0,kio=0,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0} filled 231 HeapByteBuffer@6b947e04[p=0,l=231,c=8192,r=231]={<<<POST /t/user HTTP/1.1\r\nHo...ke \\"%abcde-name8%\\""}}>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+DEBUG [2021-07-29 13:57:35,731] (HttpConnection.java[parseRequestBuffer]:362) - HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=-,flush=-,to=2/3600000}{io=0/0,kio=0,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=0,c=false/false,a=IDLE,uri=null,age=0} parse HeapByteBuffer@6b947e04[p=0,l=231,c=8192,r=231]={<<<POST /t/user HTTP/1.1\r\nHo...ke \\"%abcde-name8%\\""}}>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00} {}
+DEBUG [2021-07-29 13:57:35,731] (HttpParser.java[parseNext]:1478) - parseNext s=START HeapByteBuffer@6b947e04[p=0,l=231,c=8192,r=231]={<<<POST /t/user HTTP/1.1\r\nHo...ke \\"%abcde-name8%\\""}}>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+DEBUG [2021-07-29 13:57:35,731] (HttpParser.java[setState]:1886) - START --> SPACE1
+DEBUG [2021-07-29 13:57:35,732] (HttpParser.java[setState]:1886) - SPACE1 --> URI
+DEBUG [2021-07-29 13:57:35,732] (HttpParser.java[setState]:1886) - URI --> SPACE2
+DEBUG [2021-07-29 13:57:35,733] (HttpParser.java[setState]:1886) - SPACE2 --> REQUEST_VERSION
+DEBUG [2021-07-29 13:57:35,733] (HttpParser.java[setState]:1886) - REQUEST_VERSION --> HEADER
+DEBUG [2021-07-29 13:57:35,733] (HttpParser.java[setState]:1893) - HEADER:Host --> VALUE
+DEBUG [2021-07-29 13:57:35,733] (HttpParser.java[setState]:1893) - HEADER:Host --> IN_VALUE
+DEBUG [2021-07-29 13:57:35,733] (HttpParser.java[setState]:1893) - HEADER:Host --> FIELD
+DEBUG [2021-07-29 13:57:35,734] (HttpParser.java[setState]:1893) - HEADER:User-Agent --> VALUE
+DEBUG [2021-07-29 13:57:35,734] (HttpParser.java[setState]:1893) - HEADER:User-Agent --> IN_VALUE
+DEBUG [2021-07-29 13:57:35,734] (HttpParser.java[setState]:1893) - HEADER:User-Agent --> FIELD
+DEBUG [2021-07-29 13:57:35,734] (HttpParser.java[setState]:1893) - HEADER:Accept: */* --> IN_VALUE
+DEBUG [2021-07-29 13:57:35,734] (HttpParser.java[setState]:1893) - HEADER:Accept: */* --> FIELD
+DEBUG [2021-07-29 13:57:35,734] (HttpParser.java[setState]:1893) - HEADER:Content-Length --> VALUE
+DEBUG [2021-07-29 13:57:35,734] (HttpParser.java[setState]:1893) - HEADER:Content-Length --> IN_VALUE
+DEBUG [2021-07-29 13:57:35,734] (HttpParser.java[setState]:1893) - HEADER:Content-Length --> FIELD
+DEBUG [2021-07-29 13:57:35,734] (HttpParser.java[setState]:1893) - HEADER:Content-Type: application/x-www-form-urlencoded --> IN_VALUE
+DEBUG [2021-07-29 13:57:35,734] (HttpParser.java[setState]:1893) - HEADER:Content-Type: application/x-www-form-urlencoded --> FIELD
+DEBUG [2021-07-29 13:57:35,734] (HttpParser.java[setState]:1886) - HEADER --> CONTENT
+DEBUG [2021-07-29 13:57:35,736] (HttpChannel.java[onRequest]:691) - REQUEST for //127.0.0.1:5280/t/user on HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=//127.0.0.1:5280/t/user,age=1}
+POST //127.0.0.1:5280/t/user HTTP/1.1
+Host: 127.0.0.1:5280
+User-Agent: curl/7.64.1
+Accept: */*
+Content-Length: 77
+Content-Type: application/x-www-form-urlencoded
+
+
+DEBUG [2021-07-29 13:57:35,736] (HttpConnection.java[parseRequestBuffer]:367) - HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=-,flush=-,to=7/3600000}{io=0/0,kio=0,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=CONTENT,0 of 77},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=//127.0.0.1:5280/t/user,age=2} parsed true HttpParser{s=CONTENT,0 of 77}
+DEBUG [2021-07-29 13:57:35,737] (HttpChannel.java[handle]:344) - handle //127.0.0.1:5280/t/user HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=//127.0.0.1:5280/t/user,age=2} 
+DEBUG [2021-07-29 13:57:35,737] (HttpChannelState.java[handling]:371) - handling HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0}
+DEBUG [2021-07-29 13:57:35,737] (HttpChannel.java[handle]:358) - action DISPATCH HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=HANDLING,uri=//127.0.0.1:5280/t/user,age=3}
+DEBUG [2021-07-29 13:57:35,738] (Server.java[handle]:484) - REQUEST POST /t/user on HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=HANDLING,uri=//127.0.0.1:5280/t/user,age=4}
+DEBUG [2021-07-29 13:57:35,738] (SessionHandler.java[doScope]:1519) - Entering scope spark.embeddedserver.jetty.JettyHandler897519535==dftMaxIdleSec=-1, dispatch=REQUEST asyncstarted=false
+DEBUG [2021-07-29 13:57:35,738] (SessionHandler.java[doScope]:1577) - sessionHandler=spark.embeddedserver.jetty.JettyHandler897519535==dftMaxIdleSec=-1 session=null
+DEBUG [2021-07-29 13:57:35,741] (HttpConnection.java[parseRequestBuffer]:362) - HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=-,flush=-,to=13/3600000}{io=0/0,kio=0,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=CONTENT,0 of 77},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=HANDLING,uri=//127.0.0.1:5280/t/user,age=7} parse HeapByteBuffer@6b947e04[p=154,l=231,c=8192,r=77]={POST /t/u...ded\r\n\r\n<<<{type=GET, extra={orderBy...ke \\"%abcde-name8%\\""}}>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00} {}
+DEBUG [2021-07-29 13:57:35,741] (HttpParser.java[parseNext]:1478) - parseNext s=CONTENT HeapByteBuffer@6b947e04[p=154,l=231,c=8192,r=77]={POST /t/u...ded\r\n\r\n<<<{type=GET, extra={orderBy...ke \\"%abcde-name8%\\""}}>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+DEBUG [2021-07-29 13:57:35,742] (HttpChannel.java[onContent]:699) - onContent HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=HANDLING,uri=//127.0.0.1:5280/t/user,age=8} Content@75c7a841{HeapByteBufferR@530912ac[p=154,l=231,c=8192,r=77]={POST /t/u...ded\r\n\r\n<<<{type=GET, extra={orderBy...ke \\"%abcde-name8%\\""}}>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+DEBUG [2021-07-29 13:57:35,742] (HttpInput.java[addContent]:609) - HttpInputOverHTTP@26d16fbb[c=0,q=0,[0]=null,s=STREAM] addContent Content@75c7a841{HeapByteBufferR@530912ac[p=154,l=231,c=8192,r=77]={POST /t/u...ded\r\n\r\n<<<{type=GET, extra={orderBy...ke \\"%abcde-name8%\\""}}>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+DEBUG [2021-07-29 13:57:35,742] (HttpParser.java[setState]:1886) - CONTENT --> CONTENT_END
+DEBUG [2021-07-29 13:57:35,742] (HttpChannel.java[onContentComplete]:707) - onContentComplete HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=HANDLING,uri=//127.0.0.1:5280/t/user,age=8}
+DEBUG [2021-07-29 13:57:35,742] (HttpParser.java[setState]:1886) - CONTENT_END --> END
+DEBUG [2021-07-29 13:57:35,742] (HttpChannel.java[onRequestComplete]:723) - onRequestComplete HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=HANDLING,uri=//127.0.0.1:5280/t/user,age=8}
+DEBUG [2021-07-29 13:57:35,742] (HttpInput.java[addContent]:609) - HttpInputOverHTTP@26d16fbb[c=0,q=1,[0]=EOF,s=STREAM] addContent EOF
+DEBUG [2021-07-29 13:57:35,742] (HttpConnection.java[parseRequestBuffer]:367) - HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=-,flush=-,to=14/3600000}{io=0/0,kio=0,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=END,77 of 77},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=HANDLING,uri=//127.0.0.1:5280/t/user,age=8} parsed false HttpParser{s=END,77 of 77}
+DEBUG [2021-07-29 13:57:35,742] (HttpInput.java[read]:309) - HttpInputOverHTTP@26d16fbb[c=77,q=1,[0]=EOF,s=STREAM] read 77 from Content@75c7a841{HeapByteBufferR@530912ac[p=231,l=231,c=8192,r=0]={POST /t/u...8%\\""}}<<<>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}}
+DEBUG [2021-07-29 13:57:35,743] (HttpConnection.java[releaseRequestBuffer]:223) - releaseRequestBuffer HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=-,flush=-,to=14/3600000}{io=0/0,kio=0,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=END,77 of 77},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=HANDLING,uri=//127.0.0.1:5280/t/user,age=9}
+DEBUG [2021-07-29 13:57:35,744] (HttpChannelState.java[onReadEof]:1390) - onEof HttpChannelState@25396be4{s=HANDLING rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0}
+DEBUG [2021-07-29 13:57:35,946] (HttpOutput.java[write]:747) - write(array HeapByteBuffer@b50bd8a[p=0,l=891,c=891,r=891]={<<<{"rowCount":11,"rows":[{"...8","userid":"abcde8"}]}>>>})
+DEBUG [2021-07-29 13:57:35,946] (HttpOutput.java[write]:805) - write(array) s=OPEN,api=BLOCKING,sc=false,e=null aggregated !flush DirectByteBuffer@61342d5a[p=0,l=891,c=32768,r=891]={<<<{"rowCount":11,"rows":[{"...8","userid":"abcde8"}]}>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+DEBUG [2021-07-29 13:57:35,946] (HttpChannel.java[sendResponse]:810) - sendResponse info=null content=DirectByteBuffer@61342d5a[p=0,l=891,c=32768,r=891]={<<<{"rowCount":11,"rows":[{"...8","userid":"abcde8"}]}>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00} complete=false committing=true callback=Blocker@50d05429{null}
+DEBUG [2021-07-29 13:57:35,946] (HttpChannel.java[commit]:868) - COMMIT for /t/user on HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=HANDLING rs=BLOCKING os=COMMITTED is=READY awp=false se=false i=true al=0},r=1,c=false/false,a=HANDLING,uri=//127.0.0.1:5280/t/user,age=212}
+200 null HTTP/1.1
+Date: Thu, 29 Jul 2021 04:57:35 GMT
+Content-Type: text/html;charset=utf-8
+
+
+DEBUG [2021-07-29 13:57:35,947] (HttpConnection.java[process]:740) - generate: NEED_HEADER for org.eclipse.jetty.server.HttpConnection$SendCallback@3ad0f1e9[PROCESSING][i=HTTP/1.1{s=200,h=2,cl=-1},cb=org.eclipse.jetty.server.HttpChannel$SendCallback@5802952e] (null,[p=0,l=891,c=32768,r=891],false)@START
+DEBUG [2021-07-29 13:57:35,947] (HttpGenerator.java[generateHeaders]:601) - generateHeaders HTTP/1.1{s=200,h=2,cl=-1} last=false content=DirectByteBuffer@61342d5a[p=0,l=891,c=32768,r=891]={<<<{"rowCount":11,"rows":[{"...8","userid":"abcde8"}]}>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}
+DEBUG [2021-07-29 13:57:35,948] (HttpGenerator.java[generateHeaders]:602) - Date: Thu, 29 Jul 2021 04:57:35 GMT
+Content-Type: text/html;charset=utf-8
+
+
+DEBUG [2021-07-29 13:57:35,948] (HttpGenerator.java[generateHeaders]:780) - CHUNKED_CONTENT
+DEBUG [2021-07-29 13:57:35,948] (HttpConnection.java[process]:740) - generate: FLUSH for org.eclipse.jetty.server.HttpConnection$SendCallback@3ad0f1e9[PROCESSING][i=HTTP/1.1{s=200,h=2,cl=-1},cb=org.eclipse.jetty.server.HttpChannel$SendCallback@5802952e] ([p=0,l=161,c=8192,r=161],[p=0,l=891,c=32768,r=891],false)@COMMITTED
+DEBUG [2021-07-29 13:57:35,948] (WriteFlusher.java[write]:270) - write: WriteFlusher@14399159{IDLE}->null [HeapByteBuffer@6b947e04[p=0,l=161,c=8192,r=161]={<<<HTTP/1.1 200 OK\r\nDate: Th....31.v20200723)\r\n\r\n37B\r\n>>>ET, extra...\x00\x00\x00\x00\x00\x00\x00},DirectByteBuffer@61342d5a[p=0,l=891,c=32768,r=891]={<<<{"rowCount":11,"rows":[{"...8","userid":"abcde8"}]}>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}]
+DEBUG [2021-07-29 13:57:35,948] (WriteFlusher.java[updateState]:112) - update WriteFlusher@14399159{WRITING}->null:IDLE-->WRITING
+DEBUG [2021-07-29 13:57:35,949] (ChannelEndPoint.java[flush]:275) - flushed 1052 SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=-,flush=W,to=220/3600000}{io=0/0,kio=0,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=END,77 of 77},g=HttpGenerator@2e77ccef{s=COMMITTED}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=HANDLING rs=BLOCKING os=COMMITTED is=READY awp=false se=false i=true al=0},r=1,c=false/false,a=HANDLING,uri=//127.0.0.1:5280/t/user,age=215}
+DEBUG [2021-07-29 13:57:35,949] (WriteFlusher.java[flush]:427) - Flushed=true written=1052 remaining=0 WriteFlusher@14399159{WRITING}->null
+DEBUG [2021-07-29 13:57:35,949] (WriteFlusher.java[updateState]:112) - update WriteFlusher@14399159{IDLE}->null:WRITING-->IDLE
+DEBUG [2021-07-29 13:57:35,949] (HttpConnection.java[process]:740) - generate: DONE for org.eclipse.jetty.server.HttpConnection$SendCallback@3ad0f1e9[PROCESSING][i=HTTP/1.1{s=200,h=2,cl=-1},cb=org.eclipse.jetty.server.HttpChannel$SendCallback@5802952e] ([p=161,l=161,c=8192,r=0],[p=891,l=891,c=32768,r=0],false)@COMMITTED
+DEBUG [2021-07-29 13:57:35,949] (HttpOutput.java[onWriteComplete]:322) - onWriteComplete(false,null) s=OPEN,api=BLOCKED,sc=false,e=null->s=OPEN,api=BLOCKING,sc=false,e=null c=null cb=null w=false
+DEBUG [2021-07-29 13:57:35,949] (HttpOutput.java[close]:577) - close() s=CLOSING,api=BLOCKED,sc=false,e=null c=HeapByteBuffer@f68a40b[p=0,l=0,c=0,r=0]={<<<>>>} b=Blocker@50d05429{null}
+DEBUG [2021-07-29 13:57:35,949] (HttpChannel.java[sendResponse]:810) - sendResponse info=null content=HeapByteBuffer@f68a40b[p=0,l=0,c=0,r=0]={<<<>>>} complete=true committing=false callback=Blocker@50d05429{null}
+DEBUG [2021-07-29 13:57:35,949] (HttpConnection.java[process]:740) - generate: CONTINUE for org.eclipse.jetty.server.HttpConnection$SendCallback@3ad0f1e9[PROCESSING][i=null,cb=org.eclipse.jetty.server.HttpChannel$SendCallback@5eb534ed] (null,[p=0,l=0,c=0,r=0],true)@COMPLETING
+DEBUG [2021-07-29 13:57:35,949] (HttpConnection.java[process]:740) - generate: NEED_CHUNK for org.eclipse.jetty.server.HttpConnection$SendCallback@3ad0f1e9[PROCESSING][i=null,cb=org.eclipse.jetty.server.HttpChannel$SendCallback@5eb534ed] (null,[p=0,l=0,c=0,r=0],true)@COMPLETING
+DEBUG [2021-07-29 13:57:35,950] (HttpConnection.java[process]:740) - generate: FLUSH for org.eclipse.jetty.server.HttpConnection$SendCallback@3ad0f1e9[PROCESSING][i=null,cb=org.eclipse.jetty.server.HttpChannel$SendCallback@5eb534ed] (null,[p=0,l=0,c=0,r=0],true)@COMPLETING
+DEBUG [2021-07-29 13:57:35,950] (WriteFlusher.java[write]:270) - write: WriteFlusher@14399159{IDLE}->null [HeapByteBuffer@2758e19[p=0,l=7,c=1024,r=7]={<<<\r\n0\r\n\r\n>>>\x00\x00\x00\x00\x00\x00\x00\x00\x00...\x00\x00\x00\x00\x00\x00\x00}]
+DEBUG [2021-07-29 13:57:35,950] (WriteFlusher.java[updateState]:112) - update WriteFlusher@14399159{WRITING}->null:IDLE-->WRITING
+DEBUG [2021-07-29 13:57:35,950] (ChannelEndPoint.java[flush]:275) - flushed 7 SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=-,flush=W,to=1/3600000}{io=0/0,kio=0,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=END,77 of 77},g=HttpGenerator@2e77ccef{s=COMPLETING}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=HANDLING rs=BLOCKING os=COMMITTED is=READY awp=false se=false i=true al=0},r=1,c=false/false,a=HANDLING,uri=//127.0.0.1:5280/t/user,age=216}
+DEBUG [2021-07-29 13:57:35,950] (WriteFlusher.java[flush]:427) - Flushed=true written=7 remaining=0 WriteFlusher@14399159{WRITING}->null
+DEBUG [2021-07-29 13:57:35,950] (WriteFlusher.java[updateState]:112) - update WriteFlusher@14399159{IDLE}->null:WRITING-->IDLE
+DEBUG [2021-07-29 13:57:35,950] (HttpConnection.java[process]:740) - generate: DONE for org.eclipse.jetty.server.HttpConnection$SendCallback@3ad0f1e9[PROCESSING][i=null,cb=org.eclipse.jetty.server.HttpChannel$SendCallback@5eb534ed] (null,[p=0,l=0,c=0,r=0],true)@END
+DEBUG [2021-07-29 13:57:35,951] (HttpOutput.java[onWriteComplete]:322) - onWriteComplete(true,null) s=CLOSING,api=BLOCKED,sc=false,e=null->s=CLOSED,api=BLOCKING,sc=false,e=null c=null cb=null w=false
+DEBUG [2021-07-29 13:57:35,951] (SessionHandler.java[doScope]:1589) - Leaving scope spark.embeddedserver.jetty.JettyHandler897519535==dftMaxIdleSec=-1 dispatch=REQUEST, async=false, session=null, oldsession=null, oldsessionhandler=null
+DEBUG [2021-07-29 13:57:35,951] (Server.java[handle]:504) - handled=true async=false committed=true on HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=HANDLING rs=BLOCKING os=COMPLETED is=READY awp=false se=false i=true al=0},r=1,c=false/true,a=HANDLING,uri=//127.0.0.1:5280/t/user,age=217}
+DEBUG [2021-07-29 13:57:35,951] (HttpChannelState.java[unhandle]:413) - unhandle HttpChannelState@25396be4{s=HANDLING rs=BLOCKING os=COMPLETED is=READY awp=false se=false i=true al=0}
+DEBUG [2021-07-29 13:57:35,951] (HttpChannelState.java[unhandle]:422) - nextAction(false) COMPLETE HttpChannelState@25396be4{s=HANDLING rs=COMPLETING os=COMPLETED is=READY awp=false se=false i=false al=0}
+DEBUG [2021-07-29 13:57:35,951] (HttpChannel.java[handle]:358) - action COMPLETE HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=HANDLING rs=COMPLETING os=COMPLETED is=READY awp=false se=false i=false al=0},r=1,c=false/true,a=HANDLING,uri=//127.0.0.1:5280/t/user,age=217}
+DEBUG [2021-07-29 13:57:35,952] (HttpOutput.java[complete]:465) - complete(org.eclipse.jetty.util.Callback$3@15b8109a) s=CLOSED,api=BLOCKING,sc=false,e=null s=true e=null, c=null
+DEBUG [2021-07-29 13:57:35,952] (HttpChannelState.java[completed]:955) - completed HttpChannelState@25396be4{s=HANDLING rs=COMPLETING os=COMPLETED is=READY awp=false se=false i=false al=0}
+DEBUG [2021-07-29 13:57:35,952] (HttpChannelState.java[unhandle]:413) - unhandle HttpChannelState@25396be4{s=HANDLING rs=COMPLETED os=COMPLETED is=READY awp=false se=false i=false al=0}
+DEBUG [2021-07-29 13:57:35,952] (HttpChannelState.java[unhandle]:422) - nextAction(false) TERMINATED HttpChannelState@25396be4{s=IDLE rs=COMPLETED os=COMPLETED is=READY awp=false se=false i=false al=0}
+DEBUG [2021-07-29 13:57:35,952] (HttpChannel.java[handle]:358) - action TERMINATED HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=COMPLETED os=COMPLETED is=READY awp=false se=false i=false al=0},r=1,c=true/true,a=IDLE,uri=//127.0.0.1:5280/t/user,age=218}
+DEBUG [2021-07-29 13:57:35,952] (HttpChannel.java[onCompleted]:732) - onCompleted for /t/user written=891
+DEBUG [2021-07-29 13:57:35,953] (HttpChannelState.java[recycle]:1025) - recycle HttpChannelState@25396be4{s=IDLE rs=COMPLETED os=COMPLETED is=READY awp=false se=false i=false al=0}
+DEBUG [2021-07-29 13:57:35,953] (HttpParser.java[reset]:1864) - reset HttpParser{s=END,77 of 77}
+DEBUG [2021-07-29 13:57:35,953] (HttpParser.java[setState]:1886) - END --> START
+DEBUG [2021-07-29 13:57:35,953] (HttpChannel.java[handle]:542) - !handle TERMINATED HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
+DEBUG [2021-07-29 13:57:35,954] (AbstractEndPoint.java[shutdownInput]:66) - shutdownInput SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,OPEN,fill=-,flush=-,to=2/3600000}{io=0/0,kio=0,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
+DEBUG [2021-07-29 13:57:35,954] (ChannelEndPoint.java[fill]:263) - filled -1 HeapByteBuffer@6b947e04[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x00\x00\x00\x00\x00\x00\x00}
+DEBUG [2021-07-29 13:57:35,954] (HttpParser.java[atEOF]:1847) - atEOF HttpParser{s=START,0 of -1}
+DEBUG [2021-07-29 13:57:35,954] (HttpConnection.java[fillRequestBuffer]:345) - HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,ISHUT,fill=-,flush=-,to=3/3600000}{io=0/0,kio=0,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0} filled -1 HeapByteBuffer@6b947e04[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x00\x00\x00\x00\x00\x00\x00}
+DEBUG [2021-07-29 13:57:35,954] (HttpConnection.java[parseRequestBuffer]:362) - HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,ISHUT,fill=-,flush=-,to=3/3600000}{io=0/0,kio=0,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=START,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0} parse HeapByteBuffer@6b947e04[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x00\x00\x00\x00\x00\x00\x00} {}
+DEBUG [2021-07-29 13:57:35,954] (HttpParser.java[parseNext]:1478) - parseNext s=START HeapByteBuffer@6b947e04[p=0,l=0,c=8192,r=0]={<<<>>>HTTP/1.1 ...\x00\x00\x00\x00\x00\x00\x00}
+DEBUG [2021-07-29 13:57:35,954] (HttpParser.java[setState]:1886) - START --> CLOSED
+DEBUG [2021-07-29 13:57:35,955] (AbstractEndPoint.java[close]:174) - close SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,ISHUT,fill=-,flush=-,to=4/3600000}{io=0/0,kio=0,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
+DEBUG [2021-07-29 13:57:35,955] (AbstractEndPoint.java[close]:181) - close(null) SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,ISHUT,fill=-,flush=-,to=4/3600000}{io=0/0,kio=0,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
+DEBUG [2021-07-29 13:57:35,955] (ChannelEndPoint.java[doClose]:207) - doClose SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,CLOSED,fill=-,flush=-,to=4/3600000}{io=0/0,kio=0,kro=1}->HttpConnection@3f42bc1b[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
+DEBUG [2021-07-29 13:57:35,955] (FillInterest.java[onClose]:149) - onClose FillInterest@52f86b38{null}
+DEBUG [2021-07-29 13:57:35,955] (ManagedSelector.java[wakeup]:278) - Wakeup ManagedSelector@2c1fac7f{STARTED} id=1 keys=1 selected=0 updates=0
+DEBUG [2021-07-29 13:57:35,956] (ManagedSelector.java[select]:160) - Selector sun.nio.ch.KQueueSelectorImpl@8d566c1 woken with none selected
+DEBUG [2021-07-29 13:57:35,956] (ManagedSelector.java[select]:578) - Selector sun.nio.ch.KQueueSelectorImpl@8d566c1 woken up from select, 0/0/0 selected
+DEBUG [2021-07-29 13:57:35,956] (ManagedSelector.java[select]:591) - Selector sun.nio.ch.KQueueSelectorImpl@8d566c1 processing 0 keys, 0 updates
+DEBUG [2021-07-29 13:57:35,956] (QueuedThreadPool.java[execute]:543) - queue org.eclipse.jetty.io.ManagedSelector$DestroyEndPoint@3b58eada startThread=0
+DEBUG [2021-07-29 13:57:35,956] (ManagedSelector.java[processUpdates]:524) - updateable 0
+DEBUG [2021-07-29 13:57:35,956] (ManagedSelector.java[processUpdates]:553) - updates 0
+DEBUG [2021-07-29 13:57:35,956] (ManagedSelector.java[select]:571) - Selector sun.nio.ch.KQueueSelectorImpl@8d566c1 waiting with 0 keys
+DEBUG [2021-07-29 13:57:35,956] (QueuedThreadPool.java[run]:937) - run org.eclipse.jetty.io.ManagedSelector$DestroyEndPoint@3b58eada in QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=0,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=1/8,p=0}]
+DEBUG [2021-07-29 13:57:35,956] (HttpConnection.java[parseRequestBuffer]:367) - HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,CLOSED,fill=-,flush=-,to=5/3600000}{io=0/0,kio=-1,kro=-1}->HttpConnection@3f42bc1b[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0} parsed false HttpParser{s=CLOSED,0 of -1}
+DEBUG [2021-07-29 13:57:35,956] (ManagedSelector.java[run]:1059) - Destroyed SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,CLOSED,fill=-,flush=-,to=5/3600000}{io=0/0,kio=-1,kro=-1}->HttpConnection@3f42bc1b[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
+DEBUG [2021-07-29 13:57:35,957] (HttpConnection.java[releaseRequestBuffer]:223) - releaseRequestBuffer HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,CLOSED,fill=-,flush=-,to=6/3600000}{io=0/0,kio=-1,kro=-1}->HttpConnection@3f42bc1b[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
+DEBUG [2021-07-29 13:57:35,959] (AbstractConnection.java[onClose]:225) - onClose HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,CLOSED,fill=-,flush=-,to=6/3600000}{io=0/0,kio=-1,kro=-1}->HttpConnection@3f42bc1b[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
+DEBUG [2021-07-29 13:57:35,959] (AbstractEndPoint.java[shutdownOutput]:120) - shutdownOutput SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,CLOSED,fill=-,flush=-,to=6/3600000}{io=0/0,kio=-1,kro=-1}->HttpConnection@3f42bc1b[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
+DEBUG [2021-07-29 13:57:35,959] (QueuedThreadPool.java[run]:940) - ran org.eclipse.jetty.io.ManagedSelector$DestroyEndPoint@3b58eada in QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=0,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=1/8,p=0}]
+DEBUG [2021-07-29 13:57:35,960] (HttpConnection.java[onFillable]:296) - HttpConnection@3f42bc1b::SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,CLOSED,fill=-,flush=-,to=9/3600000}{io=0/0,kio=-1,kro=-1}->HttpConnection@3f42bc1b[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0} onFillable exit HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0} null
+DEBUG [2021-07-29 13:57:35,960] (QueuedThreadPool.java[run]:940) - ran CEP:SocketChannelEndPoint@7542cb80{l=/127.0.0.1:5280,r=/127.0.0.1:51119,CLOSED,fill=-,flush=-,to=9/3600000}{io=0/0,kio=-1,kro=-1}->HttpConnection@3f42bc1b[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@2e77ccef{s=START}]=>HttpChannelOverHttp@6f7b287b{s=HttpChannelState@25396be4{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}:runFillable:BLOCKING in QueuedThreadPool[qtp983775922]@3aa33ab2{STARTED,8<=8<=200,i=1,r=8,q=0}[ReservedThreadExecutor@172d27e7{s=1/8,p=0}]

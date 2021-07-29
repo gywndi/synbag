@@ -23,9 +23,12 @@ import lombok.ToString;
 import javax.sql.DataSource;
 
 import net.gywn.algorithm.PreciseShardingCRC32;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @ToString
 public class SynbagConfig {
+    private static final Logger logger = LoggerFactory.getLogger(SynbagConfig.class);
     private ShardingRuleConfiguration shardingRuleConfig = new ShardingRuleConfiguration();
 
     @Setter
@@ -66,6 +69,8 @@ public class SynbagConfig {
         // ===========================
         // Sharding table config
         // ===========================
+        logger.info("===========================");
+        logger.info("Config sharding tables ");
         for (Entry<String, ShardingTable> entry : shardingTables.entrySet()) {
 
             String logicalTableName = entry.getKey();
@@ -74,6 +79,8 @@ public class SynbagConfig {
             // Sharding table rule
             String datanodes = String.format("ds${0..%d}.%s", dataSources.length - 1, shardingTable.getRealTableName());
             TableRuleConfiguration tableRule = new TableRuleConfiguration(logicalTableName, datanodes);
+            logger.info("[datanodes] {}", datanodes);
+            logger.info("[shardingTable] {}", shardingTable);
 
             // Regist sharding rule
             tableRule.setDatabaseShardingStrategyConfig(new StandardShardingStrategyConfiguration(
@@ -82,14 +89,17 @@ public class SynbagConfig {
 
             // Regist sharding table(defined by logical table name)
             shardingRuleConfig.getBindingTableGroups().add(logicalTableName);
-
+            shardingRuleConfig.setDefaultDataSourceName("ds0");
         }
 
         // ===========================
         // Broastcast table config
         // ===========================
+        logger.info("===========================");
+        logger.info("Config broastcast tables ");
         for (String broadcastTable : broadcastTables) {
             shardingRuleConfig.getBroadcastTables().add(broadcastTable);
+            logger.info("[broadcastTable] {}", broadcastTable);
         }
 
         // ===========================
@@ -102,6 +112,9 @@ public class SynbagConfig {
         }
         shardingRuleConfig.setDefaultDataSourceName("ds0");
         shardingDatasource = ShardingDataSourceFactory.createDataSource(map, shardingRuleConfig, null);
+        logger.info("shardingDatasource created");
+
+        logger.info(this.toString());
     }
 
     // Check elements in SynbagConfig

@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.zip.CRC32;
 import java.util.zip.Checksum;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.apache.shardingsphere.api.sharding.standard.PreciseShardingAlgorithm;
 import org.apache.shardingsphere.api.sharding.standard.PreciseShardingValue;
 
 public class PreciseShardingCRC32 implements PreciseShardingAlgorithm<Comparable<?>> {
+    private static final Logger logger = LoggerFactory.getLogger(PreciseShardingCRC32.class);
 
 	public String doSharding(Collection<String> availableTargetNames,
 			PreciseShardingValue<Comparable<?>> shardingValue) {
