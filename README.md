@@ -43,6 +43,34 @@ synbagConfig.setBroadcastTables(broadcastTables); // Add broadcast policy
 synbagConfig.init();
 ```
 
+## synbag-config.yml
+sample config file
+```yaml
+dataSources:
+- !!org.apache.commons.dbcp2.BasicDataSource
+  driverClassName: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://127.0.0.1:3306/shard01?autoReconnect=true
+  username: shard01
+  password: shard01
+  maxTotal: 30
+- !!org.apache.commons.dbcp2.BasicDataSource
+  driverClassName: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://127.0.0.1:3306/shard02?autoReconnect=true
+  username: shard02
+  password: shard02
+  maxTotal: 30
+
+shardingTables:
+  user:
+    realTableName: user
+    shardingColumn: userid
+    shardingMethod: crc32
+  user_log:
+    shardingColumn: userid
+    shardingMethod: crc32
+broadcastTables: [config]
+```
+
 ## Usage as REST API
 ```
 Usage: <main class> [-c=<configFile>] [-p=<port>] [-r=<route>]
