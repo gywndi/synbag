@@ -38,6 +38,7 @@ public enum ReqType {
                 sbSQL.append("(").append(cols).append(")");
                 sbSQL.append(" values ");
                 sbSQL.append("(").append(vals).append(")");
+                logger.debug("[SQL]{} [params]{}", sbSQL, params);
 
                 // Bind parameters preparedStatement
                 int seq = 1;
@@ -50,6 +51,7 @@ public enum ReqType {
                 pstmt.close();
             } catch (Exception e) {
                 res.setMessage(e.toString());
+                logger.error(e.toString());
             }
             return res;
         }
@@ -80,6 +82,7 @@ public enum ReqType {
                     sbSQL.append(" and ").append(entry.getKey()).append(" = ?");
                     params.add(entry.getValue());
                 }
+                logger.debug("[SQL]{} [params]{}", sbSQL, params);
 
                 // Bind parameters preparedStatement
                 int seq = 1;
@@ -92,6 +95,7 @@ public enum ReqType {
                 pstmt.close();
             } catch (Exception e) {
                 res.setMessage(e.toString());
+                logger.error(e.toString());
             }
             return res;
         }
@@ -113,6 +117,7 @@ public enum ReqType {
                     sbSQL.append(" and ").append(entry.getKey()).append(" = ?");
                     params.add(entry.getValue());
                 }
+                logger.debug("[SQL]{} [params]{}", sbSQL, params);
 
                 // Bind parameters preparedStatement
                 int seq = 1;
@@ -125,6 +130,7 @@ public enum ReqType {
                 pstmt.close();
             } catch (Exception e) {
                 res.setMessage(e.toString());
+                logger.error(e.toString());
             }
             return res;
         }
@@ -169,8 +175,7 @@ public enum ReqType {
                         sbSQL.append(" offset ").append(req.getExtra().getOffset());
                     }
                 }
-
-                System.out.println(sbSQL.toString());
+                logger.debug("[SQL]{} [params]{}", sbSQL, params);
 
                 // Bind parameters preparedStatement
                 int seq = 1;
@@ -200,6 +205,7 @@ public enum ReqType {
                 conn.close();
             } catch (Exception e) {
                 res.setMessage(e.toString());
+                logger.error(e.toString());
             }
             return res;
         }
@@ -210,6 +216,8 @@ public enum ReqType {
             Res res = new Res();
             try (final Connection conn = ds.getConnection()) {
                 PreparedStatement pstmt = conn.prepareStatement(req.getQuery());
+                logger.debug("[SQL]{}", req.getQuery());
+
                 ResultSet rs = pstmt.executeQuery();
                 ResultSetMetaData rsMeta = rs.getMetaData();
                 List<Map<String, String>> rows = new ArrayList<Map<String, String>>();
@@ -230,9 +238,11 @@ public enum ReqType {
                 conn.close();
             } catch (Exception e) {
                 res.setMessage(e.toString());
+                logger.error(e.toString());
             }
             return res;
         }
     };
+    private static final Logger logger = LoggerFactory.getLogger(ReqType.class);
     public abstract Res getRes(final DataSource ds, final String tb, final Req req);
 }
