@@ -6629,3 +6629,27 @@ DEBUG [2021-07-29 14:06:26,934] (QueuedThreadPool.java[run]:940) - ran org.eclip
 DEBUG [2021-07-29 14:06:26,934] (AbstractEndPoint.java[shutdownOutput]:120) - shutdownOutput SocketChannelEndPoint@312e8922{l=/127.0.0.1:5280,r=/127.0.0.1:51211,CLOSED,fill=-,flush=-,to=3/3600000}{io=0/0,kio=-1,kro=-1}->HttpConnection@15db3e01[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@5dc2204b{s=START}]=>HttpChannelOverHttp@1902868b{s=HttpChannelState@6eaab3b8{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
 DEBUG [2021-07-29 14:06:26,935] (HttpConnection.java[onFillable]:296) - HttpConnection@15db3e01::SocketChannelEndPoint@312e8922{l=/127.0.0.1:5280,r=/127.0.0.1:51211,CLOSED,fill=-,flush=-,to=4/3600000}{io=0/0,kio=-1,kro=-1}->HttpConnection@15db3e01[p=HttpParser{s=CLOSED,0 of -1},g=HttpGenerator@5dc2204b{s=START}]=>HttpChannelOverHttp@1902868b{s=HttpChannelState@6eaab3b8{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0} onFillable exit HttpChannelState@6eaab3b8{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0} null
 DEBUG [2021-07-29 14:06:26,935] (QueuedThreadPool.java[run]:940) - ran org.eclipse.jetty.io.ManagedSelector$$Lambda$179/0x00000003003aa568@2f87d5f1 in QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=1,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=1/8,p=0}]
+DEBUG [2021-07-29 14:07:26,924] (ReservedThreadExecutor.java[reservedWait]:306) - ReservedThreadExecutor@35e6e8c{s=1/8,p=0}@a9ff71a task=null
+DEBUG [2021-07-29 14:07:26,925] (ReservedThreadExecutor.java[reservedWait]:313) - ReservedThreadExecutor@35e6e8c{s=1/8,p=0}@a9ff71a IDLE
+DEBUG [2021-07-29 14:07:26,925] (ReservedThreadExecutor.java[run]:384) - ReservedThreadExecutor@35e6e8c{s=0/8,p=0}@a9ff71a Exited
+DEBUG [2021-07-29 14:07:26,926] (QueuedThreadPool.java[run]:940) - ran ReservedThreadExecutor@35e6e8c{s=0/8,p=0}@a9ff71a in QueuedThreadPool[qtp235952080]@e1057d0{STARTED,8<=8<=200,i=2,r=8,q=0}[ReservedThreadExecutor@35e6e8c{s=0/8,p=0}]
+DEBUG [2021-07-29 14:16:24,435] (HouseKeeper.java[scavenge]:248) - node0 scavenging sessions
+DEBUG [2021-07-29 14:16:24,436] (SessionHandler.java[scavenge]:1248) - spark.embeddedserver.jetty.JettyHandler67843395==dftMaxIdleSec=-1 scavenging sessions
+DEBUG [2021-07-29 14:16:24,437] (SessionHandler.java[scavenge]:1256) - spark.embeddedserver.jetty.JettyHandler67843395==dftMaxIdleSec=-1 scavenging session ids []
+DEBUG [2021-07-29 14:16:24,437] (AbstractSessionCache.java[checkExpiration]:688) - org.eclipse.jetty.server.session.DefaultSessionCache@332db43a[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false] checking expiration on []
+DEBUG [2021-07-29 14:26:24,445] (HouseKeeper.java[scavenge]:248) - node0 scavenging sessions
+DEBUG [2021-07-29 14:26:24,447] (SessionHandler.java[scavenge]:1248) - spark.embeddedserver.jetty.JettyHandler67843395==dftMaxIdleSec=-1 scavenging sessions
+DEBUG [2021-07-29 14:26:24,447] (SessionHandler.java[scavenge]:1256) - spark.embeddedserver.jetty.JettyHandler67843395==dftMaxIdleSec=-1 scavenging session ids []
+DEBUG [2021-07-29 14:26:24,447] (AbstractSessionCache.java[checkExpiration]:688) - org.eclipse.jetty.server.session.DefaultSessionCache@332db43a[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false] checking expiration on []
+DEBUG [2021-07-29 14:36:24,408] (HouseKeeper.java[scavenge]:248) - node0 scavenging sessions
+DEBUG [2021-07-29 14:36:24,409] (SessionHandler.java[scavenge]:1248) - spark.embeddedserver.jetty.JettyHandler67843395==dftMaxIdleSec=-1 scavenging sessions
+DEBUG [2021-07-29 14:36:24,409] (SessionHandler.java[scavenge]:1256) - spark.embeddedserver.jetty.JettyHandler67843395==dftMaxIdleSec=-1 scavenging session ids []
+DEBUG [2021-07-29 14:36:24,409] (AbstractSessionCache.java[checkExpiration]:688) - org.eclipse.jetty.server.session.DefaultSessionCache@332db43a[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false] checking expiration on []
+DEBUG [2021-07-29 14:46:24,406] (HouseKeeper.java[scavenge]:248) - node0 scavenging sessions
+DEBUG [2021-07-29 14:46:24,408] (SessionHandler.java[scavenge]:1248) - spark.embeddedserver.jetty.JettyHandler67843395==dftMaxIdleSec=-1 scavenging sessions
+DEBUG [2021-07-29 14:46:24,408] (SessionHandler.java[scavenge]:1256) - spark.embeddedserver.jetty.JettyHandler67843395==dftMaxIdleSec=-1 scavenging session ids []
+DEBUG [2021-07-29 14:46:24,408] (AbstractSessionCache.java[checkExpiration]:688) - org.eclipse.jetty.server.session.DefaultSessionCache@332db43a[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false] checking expiration on []
+DEBUG [2021-07-29 14:56:24,408] (HouseKeeper.java[scavenge]:248) - node0 scavenging sessions
+DEBUG [2021-07-29 14:56:24,410] (SessionHandler.java[scavenge]:1248) - spark.embeddedserver.jetty.JettyHandler67843395==dftMaxIdleSec=-1 scavenging sessions
+DEBUG [2021-07-29 14:56:24,410] (SessionHandler.java[scavenge]:1256) - spark.embeddedserver.jetty.JettyHandler67843395==dftMaxIdleSec=-1 scavenging session ids []
+DEBUG [2021-07-29 14:56:24,410] (AbstractSessionCache.java[checkExpiration]:688) - org.eclipse.jetty.server.session.DefaultSessionCache@332db43a[evict=-1,removeUnloadable=false,saveOnCreate=false,saveOnInactiveEvict=false] checking expiration on []
